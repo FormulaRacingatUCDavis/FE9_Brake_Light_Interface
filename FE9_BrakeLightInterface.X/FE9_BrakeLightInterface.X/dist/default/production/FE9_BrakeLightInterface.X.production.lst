@@ -1,0 +1,2788 @@
+
+
+Microchip MPLAB XC8 Assembler V2.36 build 20220127204148 
+                                                                                               Sat Mar 05 11:57:40 2022
+
+Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og1 
+     1                           	processor	18F26K83
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    22                           	psect	ivt0x8,global,reloc=2,class=CODE,delta=1,noexec,keep,optim=
+    23                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    24                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    25                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    26                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    27                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    28  0000                     
+    29                           ; Version 2.35
+    30                           ; Generated 05/05/2021 GMT
+    31                           ; 
+    32                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    33                           ; All rights reserved.
+    34                           ; 
+    35                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    36                           ; 
+    37                           ; Redistribution and use in source and binary forms, with or without modification, are
+    38                           ; permitted provided that the following conditions are met:
+    39                           ; 
+    40                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    41                           ;        conditions and the following disclaimer.
+    42                           ; 
+    43                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    44                           ;        of conditions and the following disclaimer in the documentation and/or other
+    45                           ;        materials provided with the distribution. Publication is not required when
+    46                           ;        this file is used in an embedded application.
+    47                           ; 
+    48                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    49                           ;        software without specific prior written permission.
+    50                           ; 
+    51                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    52                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    53                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    54                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    55                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    56                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    57                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    58                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    59                           ; 
+    60                           ; 
+    61                           ; Code-generator required, PIC18F26K83 Definitions
+    62                           ; 
+    63                           ; SFR Addresses
+    64  0000                     _COMSTATbits	set	16272
+    65  0000                     _RXB1SIDH	set	14321
+    66  0000                     _RXB1SIDL	set	14322
+    67  0000                     _RXB0D7	set	16269
+    68  0000                     _RXB0D6	set	16268
+    69  0000                     _RXB0D5	set	16267
+    70  0000                     _RXB0D4	set	16266
+    71  0000                     _RXB0D3	set	16265
+    72  0000                     _RXB0D2	set	16264
+    73  0000                     _RXB0D1	set	16263
+    74  0000                     _RXB0D0	set	16262
+    75  0000                     _RXB0DLC	set	16261
+    76  0000                     _RXB0SIDH	set	16257
+    77  0000                     _RXB0EIDL	set	16260
+    78  0000                     _RXB0EIDH	set	16259
+    79  0000                     _RXB0SIDL	set	16258
+    80  0000                     _TXB2SIDL	set	14274
+    81  0000                     _TXB2SIDH	set	14273
+    82  0000                     _TXB2EIDH	set	14275
+    83  0000                     _TXB2CONbits	set	14272
+    84  0000                     _TXB1SIDL	set	14290
+    85  0000                     _TXB1SIDH	set	14289
+    86  0000                     _TXB1EIDH	set	14291
+    87  0000                     _TXB1CONbits	set	14288
+    88  0000                     _TXB0SIDL	set	14306
+    89  0000                     _TXB0SIDH	set	14305
+    90  0000                     _TXB0EIDH	set	14307
+    91  0000                     _TXB0CONbits	set	14304
+    92  0000                     _PIE5bits	set	14741
+    93  0000                     _PIR5bits	set	14757
+    94  0000                     _RXF5SIDL	set	14261
+    95  0000                     _RXF5SIDH	set	14260
+    96  0000                     _RXF5EIDL	set	14263
+    97  0000                     _RXF5EIDH	set	14262
+    98  0000                     _RXF4SIDL	set	14257
+    99  0000                     _RXF4SIDH	set	14256
+   100  0000                     _RXF4EIDL	set	14259
+   101  0000                     _RXF4EIDH	set	14258
+   102  0000                     _RXF3SIDL	set	14253
+   103  0000                     _RXF3SIDH	set	14252
+   104  0000                     _RXF3EIDL	set	14255
+   105  0000                     _RXF3EIDH	set	14254
+   106  0000                     _RXF2SIDL	set	14249
+   107  0000                     _RXF2SIDH	set	14248
+   108  0000                     _RXF2EIDL	set	14251
+   109  0000                     _RXF2EIDH	set	14250
+   110  0000                     _RXF1SIDL	set	14245
+   111  0000                     _RXF1SIDH	set	14244
+   112  0000                     _RXF1EIDL	set	14247
+   113  0000                     _RXF1EIDH	set	14246
+   114  0000                     _RXF0SIDL	set	14241
+   115  0000                     _RXF0EIDL	set	14243
+   116  0000                     _RXM1SIDL	set	14269
+   117  0000                     _RXM1SIDH	set	14268
+   118  0000                     _RXM1EIDL	set	14271
+   119  0000                     _RXM1EIDH	set	14270
+   120  0000                     _RXM0SIDL	set	14265
+   121  0000                     _RXM0EIDL	set	14267
+   122  0000                     _ECANCON	set	16273
+   123  0000                     _OSCTUNE	set	14814
+   124  0000                     _OSCFRQ	set	14815
+   125  0000                     _LATAbits	set	16314
+   126  0000                     _BRGCON1	set	14083
+   127  0000                     _RXF0SIDH	set	14240
+   128  0000                     _RXF0EIDH	set	14242
+   129  0000                     _RXM0SIDH	set	14264
+   130  0000                     _RXM0EIDH	set	14266
+   131  0000                     _CIOCON	set	14080
+   132  0000                     _PMD0	set	14784
+   133  0000                     _OSCCON1	set	14809
+   134  0000                     _OSCCON3	set	14811
+   135  0000                     _OSCEN	set	14813
+   136  0000                     _RB4PPS	set	14860
+   137  0000                     _ANSELA	set	14912
+   138  0000                     _ANSELB	set	14928
+   139  0000                     _ANSELC	set	14944
+   140  0000                     _RXB0CONbits	set	16256
+   141  0000                     _CANSTAT	set	16270
+   142  0000                     _CANCON	set	16271
+   143  0000                     _PMD7	set	14791
+   144  0000                     _PMD6	set	14790
+   145  0000                     _PMD5	set	14789
+   146  0000                     _PMD4	set	14788
+   147  0000                     _PMD3	set	14787
+   148  0000                     _PMD2	set	14786
+   149  0000                     _PMD1	set	14785
+   150  0000                     _LATA	set	16314
+   151  0000                     _BRGCON3	set	14085
+   152  0000                     _BRGCON2	set	14084
+   153  0000                     _RXB1CONbits	set	14320
+   154  0000                     _TXB0D7	set	14317
+   155  0000                     _TXB0D6	set	14316
+   156  0000                     _TXB0D5	set	14315
+   157  0000                     _TXB0D4	set	14314
+   158  0000                     _TXB0D3	set	14313
+   159  0000                     _TXB0D2	set	14312
+   160  0000                     _TXB0D1	set	14311
+   161  0000                     _TXB0D0	set	14310
+   162  0000                     _TXB0DLC	set	14309
+   163  0000                     _TXB0EIDL	set	14308
+   164  0000                     _TXB1D7	set	14301
+   165  0000                     _TXB1D6	set	14300
+   166  0000                     _TXB1D5	set	14299
+   167  0000                     _TXB1D4	set	14298
+   168  0000                     _TXB1D3	set	14297
+   169  0000                     _TXB1D2	set	14296
+   170  0000                     _TXB1D1	set	14295
+   171  0000                     _TXB1D0	set	14294
+   172  0000                     _TXB1DLC	set	14293
+   173  0000                     _TXB1EIDL	set	14292
+   174  0000                     _TXB2D7	set	14285
+   175  0000                     _TXB2D6	set	14284
+   176  0000                     _TXB2D5	set	14283
+   177  0000                     _TXB2D4	set	14282
+   178  0000                     _TXB2D3	set	14281
+   179  0000                     _TXB2D2	set	14280
+   180  0000                     _TXB2D1	set	14279
+   181  0000                     _TXB2D0	set	14278
+   182  0000                     _TXB2DLC	set	14277
+   183  0000                     _TXB2EIDL	set	14276
+   184  0000                     _RXB1D7	set	14333
+   185  0000                     _RXB1D6	set	14332
+   186  0000                     _RXB1D5	set	14331
+   187  0000                     _RXB1D4	set	14330
+   188  0000                     _RXB1D3	set	14329
+   189  0000                     _RXB1D2	set	14328
+   190  0000                     _RXB1D1	set	14327
+   191  0000                     _RXB1D0	set	14326
+   192  0000                     _RXB1DLC	set	14325
+   193  0000                     _RXB1EIDL	set	14324
+   194  0000                     _RXB1EIDH	set	14323
+   195  0000                     _TRISA	set	16322
+   196  0000                     _LATC	set	16316
+   197  0000                     _LATB	set	16315
+   198  0000                     _INTCON0bits	set	16338
+   199  0000                     _TRISC	set	16324
+   200  0000                     _TRISB	set	16323
+   201  0000                     _INLVLC	set	14948
+   202  0000                     _SLRCONC	set	14947
+   203  0000                     _ODCONC	set	14946
+   204  0000                     _WPUC	set	14945
+   205  0000                     _WPUE	set	14977
+   206  0000                     _INLVLB	set	14932
+   207  0000                     _SLRCONB	set	14931
+   208  0000                     _ODCONB	set	14930
+   209  0000                     _WPUB	set	14929
+   210  0000                     _INLVLA	set	14916
+   211  0000                     _SLRCONA	set	14915
+   212  0000                     _ODCONA	set	14914
+   213  0000                     _WPUA	set	14913
+   214  0000                     _INLVLE	set	14980
+   215  0000                     _CANRXPPS	set	15085
+   216                           
+   217                           ; #config settings
+   218                           
+   219                           	psect	cinit
+   220  0006A4                     __pcinit:
+   221                           	callstack 0
+   222  0006A4                     start_initialization:
+   223                           	callstack 0
+   224  0006A4                     __initialization:
+   225                           	callstack 0
+   226                           
+   227                           ; Clear objects allocated to COMRAM (2 bytes)
+   228  0006A4  6A2D               	clrf	(__pbssCOMRAM+1)& (0+255),c
+   229  0006A6  6A2C               	clrf	__pbssCOMRAM& (0+255),c
+   230                           
+   231                           ;
+   232                           ; Setup IVTBASE
+   233                           ;
+   234  0006A8  0E08               	movlw	(ivt0x8_base shr 0)& (0+255)
+   235  0006AA  6ED5               	movwf	213,c
+   236  0006AC  0E00               	movlw	(ivt0x8_base shr (0+8))& (0+255)
+   237  0006AE  6ED6               	movwf	214,c
+   238  0006B0  0E00               	movlw	(ivt0x8_base shr (0+16))& (0+255)
+   239  0006B2  6ED7               	movwf	215,c
+   240  0006B4                     end_of_initialization:
+   241                           	callstack 0
+   242  0006B4                     __end_of__initialization:
+   243                           	callstack 0
+   244  0006B4  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   245  0006B6  6EF8               	movwf	tblptru,c
+   246  0006B8  0100               	movlb	0
+   247  0006BA  EFB3  F002         	goto	_main	;jump to C main() function
+   248                           
+   249                           	psect	bssCOMRAM
+   250  00002C                     __pbssCOMRAM:
+   251                           	callstack 0
+   252  00002C                     _WakeUpInterruptHandler:
+   253                           	callstack 0
+   254  00002C                     	ds	2
+   255                           
+   256                           	psect	cstackCOMRAM
+   257  000001                     __pcstackCOMRAM:
+   258                           	callstack 0
+   259  000001                     ??_INTERRUPT_InterruptManager:
+   260  000001                     
+   261                           ; 1 bytes @ 0x0
+   262  000001                     	ds	2
+   263  000003                     ?_convertReg2ExtendedCANid:
+   264                           	callstack 0
+   265  000003                     ?_convertReg2StandardCANid:
+   266                           	callstack 0
+   267  000003                     convertReg2ExtendedCANid@tempRXBn_EIDL:
+   268                           	callstack 0
+   269  000003                     convertReg2StandardCANid@tempRXBn_SIDL:
+   270                           	callstack 0
+   271  000003                     ECAN_SetWakeUpInterruptHandler@handler:
+   272                           	callstack 0
+   273                           
+   274                           ; 2 bytes @ 0x2
+   275  000003                     	ds	1
+   276  000004                     convertReg2ExtendedCANid@tempRXBn_SIDH:
+   277                           	callstack 0
+   278                           
+   279                           ; 1 bytes @ 0x3
+   280  000004                     	ds	1
+   281  000005                     ??_ECAN_Initialize:
+   282  000005                     convertReg2ExtendedCANid@tempRXBn_SIDL:
+   283                           	callstack 0
+   284                           
+   285                           ; 1 bytes @ 0x4
+   286  000005                     	ds	1
+   287  000006                     
+   288                           ; 1 bytes @ 0x5
+   289  000006                     	ds	1
+   290  000007                     ??_convertReg2ExtendedCANid:
+   291  000007                     ??_convertReg2StandardCANid:
+   292                           
+   293                           ; 1 bytes @ 0x6
+   294  000007                     	ds	2
+   295  000009                     convertReg2StandardCANid@tempRXBn_SIDH:
+   296                           	callstack 0
+   297                           
+   298                           ; 1 bytes @ 0x8
+   299  000009                     	ds	1
+   300  00000A                     convertReg2StandardCANid@returnValue:
+   301                           	callstack 0
+   302                           
+   303                           ; 4 bytes @ 0x9
+   304  00000A                     	ds	1
+   305  00000B                     convertReg2ExtendedCANid@tempRXBn_EIDH:
+   306                           	callstack 0
+   307                           
+   308                           ; 1 bytes @ 0xA
+   309  00000B                     	ds	1
+   310  00000C                     convertReg2ExtendedCANid@returnValue:
+   311                           	callstack 0
+   312                           
+   313                           ; 4 bytes @ 0xB
+   314  00000C                     	ds	2
+   315  00000E                     convertReg2StandardCANid@ConvertedID:
+   316                           	callstack 0
+   317                           
+   318                           ; 4 bytes @ 0xD
+   319  00000E                     	ds	2
+   320  000010                     convertReg2ExtendedCANid@CAN_standardLo_ID_lo2bits:
+   321                           	callstack 0
+   322                           
+   323                           ; 1 bytes @ 0xF
+   324  000010                     	ds	1
+   325  000011                     convertReg2ExtendedCANid@CAN_standardLo_ID_hi3bits:
+   326                           	callstack 0
+   327                           
+   328                           ; 1 bytes @ 0x10
+   329  000011                     	ds	1
+   330  000012                     convertReg2ExtendedCANid@ConvertedID:
+   331                           	callstack 0
+   332                           
+   333                           ; 4 bytes @ 0x11
+   334  000012                     	ds	4
+   335  000016                     CAN_receive@tempCanMsg:
+   336                           	callstack 0
+   337                           
+   338                           ; 2 bytes @ 0x15
+   339  000016                     	ds	2
+   340  000018                     CAN_receive@returnValue:
+   341                           	callstack 0
+   342                           
+   343                           ; 1 bytes @ 0x17
+   344  000018                     	ds	1
+   345  000019                     ??_main:
+   346                           
+   347                           ; 1 bytes @ 0x18
+   348  000019                     	ds	4
+   349  00001D                     main@tempVal1:
+   350                           	callstack 0
+   351                           
+   352                           ; 1 bytes @ 0x1C
+   353  00001D                     	ds	1
+   354  00001E                     main@tempCanMsg:
+   355                           	callstack 0
+   356                           
+   357                           ; 14 bytes @ 0x1D
+   358  00001E                     	ds	14
+   359                           
+   360 ;;
+   361 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
+   362 ;;
+   363 ;; *************** function _main *****************
+   364 ;; Defined at:
+   365 ;;		line 52 in file "main.c"
+   366 ;; Parameters:    Size  Location     Type
+   367 ;;		None
+   368 ;; Auto vars:     Size  Location     Type
+   369 ;;  tempCanMsg     14   29[COMRAM] struct .
+   370 ;;  tempVal1        1   28[COMRAM] unsigned char 
+   371 ;; Return value:  Size  Location     Type
+   372 ;;                  1    wreg      void 
+   373 ;; Registers used:
+   374 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   375 ;; Tracked objects:
+   376 ;;		On entry : 0/0
+   377 ;;		On exit  : 0/0
+   378 ;;		Unchanged: 0/0
+   379 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   380 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   381 ;;      Locals:        15       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   382 ;;      Temps:          4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   383 ;;      Totals:        19       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   384 ;;Total ram usage:       19 bytes
+   385 ;; Hardware stack levels required when called: 6
+   386 ;; This function calls:
+   387 ;;		_CAN_receive
+   388 ;;		_SYSTEM_Initialize
+   389 ;; This function is called by:
+   390 ;;		Startup code after reset
+   391 ;; This function uses a non-reentrant model
+   392 ;;
+   393                           
+   394                           	psect	text0
+   395  000566                     __ptext0:
+   396                           	callstack 0
+   397  000566                     _main:
+   398                           	callstack 25
+   399  000566                     
+   400                           ;main.c: 55:     SYSTEM_Initialize();
+   401  000566  EC6B  F003         	call	_SYSTEM_Initialize	;wreg free
+   402  00056A                     
+   403                           ;main.c: 66:     uCAN_MSG tempCanMsg;;main.c: 67:     uint8_t tempVal1 = 0x420;
+   404  00056A  0E20               	movlw	32
+   405  00056C  6E1D               	movwf	main@tempVal1^0,c
+   406  00056E  EFD4  F002         	goto	l1618
+   407  000572                     l1616:
+   408                           
+   409                           ;main.c: 71:         {;main.c: 72:             if(tempCanMsg.frame.id == tempVal1)
+   410  000572  C01D  F019         	movff	main@tempVal1,??_main
+   411  000576  6A1A               	clrf	(??_main+1)^0,c
+   412  000578  6A1B               	clrf	(??_main+2)^0,c
+   413  00057A  6A1C               	clrf	(??_main+3)^0,c
+   414  00057C  501F               	movf	(main@tempCanMsg+1)^0,w,c
+   415  00057E  1819               	xorwf	??_main^0,w,c
+   416  000580  E10D               	bnz	u341
+   417  000582  5020               	movf	(main@tempCanMsg+2)^0,w,c
+   418  000584  181A               	xorwf	(??_main+1)^0,w,c
+   419  000586  E10A               	bnz	u341
+   420  000588  5021               	movf	(main@tempCanMsg+3)^0,w,c
+   421  00058A  181B               	xorwf	(??_main+2)^0,w,c
+   422  00058C  E107               	bnz	u341
+   423  00058E  5022               	movf	(main@tempCanMsg+4)^0,w,c
+   424  000590  181C               	xorwf	(??_main+3)^0,w,c
+   425  000592  A4D8               	btfss	status,2,c
+   426  000594  EFCE  F002         	goto	u341
+   427  000598  EFD0  F002         	goto	u340
+   428  00059C                     u341:
+   429  00059C  EFD3  F002         	goto	l441
+   430  0005A0                     u340:
+   431  0005A0  8CBA               	bsf	186,6,c	;volatile
+   432  0005A2  EFD4  F002         	goto	l1618
+   433  0005A6                     l441:
+   434  0005A6  9CBA               	bcf	186,6,c	;volatile
+   435  0005A8                     l1618:
+   436                           
+   437                           ;main.c: 70:         while(CAN_receive(&tempCanMsg))
+   438  0005A8  0E1E               	movlw	low main@tempCanMsg
+   439  0005AA  6E16               	movwf	CAN_receive@tempCanMsg^0,c
+   440  0005AC  0E00               	movlw	high main@tempCanMsg
+   441  0005AE  6E17               	movwf	(CAN_receive@tempCanMsg+1)^0,c
+   442  0005B0  EC0F  F000         	call	_CAN_receive	;wreg free
+   443  0005B4  0900               	iorlw	0
+   444  0005B6  A4D8               	btfss	status,2,c
+   445  0005B8  EFE0  F002         	goto	u351
+   446  0005BC  EFE2  F002         	goto	u350
+   447  0005C0                     u351:
+   448  0005C0  EFB9  F002         	goto	l1616
+   449  0005C4                     u350:
+   450  0005C4  EFD4  F002         	goto	l1618
+   451  0005C8  EF0D  F000         	goto	start
+   452  0005CC                     __end_of_main:
+   453                           	callstack 0
+   454                           
+   455 ;; *************** function _SYSTEM_Initialize *****************
+   456 ;; Defined at:
+   457 ;;		line 50 in file "mcc_generated_files/mcc.c"
+   458 ;; Parameters:    Size  Location     Type
+   459 ;;		None
+   460 ;; Auto vars:     Size  Location     Type
+   461 ;;		None
+   462 ;; Return value:  Size  Location     Type
+   463 ;;                  1    wreg      void 
+   464 ;; Registers used:
+   465 ;;		wreg, status,2, status,0, cstack
+   466 ;; Tracked objects:
+   467 ;;		On entry : 0/0
+   468 ;;		On exit  : 0/0
+   469 ;;		Unchanged: 0/0
+   470 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   471 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   472 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   473 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   474 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   475 ;;Total ram usage:        0 bytes
+   476 ;; Hardware stack levels used: 1
+   477 ;; Hardware stack levels required when called: 5
+   478 ;; This function calls:
+   479 ;;		_ECAN_Initialize
+   480 ;;		_INTERRUPT_Initialize
+   481 ;;		_OSCILLATOR_Initialize
+   482 ;;		_PIN_MANAGER_Initialize
+   483 ;;		_PMD_Initialize
+   484 ;; This function is called by:
+   485 ;;		_main
+   486 ;; This function uses a non-reentrant model
+   487 ;;
+   488                           
+   489                           	psect	text1
+   490  0006D6                     __ptext1:
+   491                           	callstack 0
+   492  0006D6                     _SYSTEM_Initialize:
+   493                           	callstack 25
+   494  0006D6                     
+   495                           ;mcc_generated_files/mcc.c: 52:     INTERRUPT_Initialize();
+   496  0006D6  EC7B  F003         	call	_INTERRUPT_Initialize	;wreg free
+   497  0006DA                     
+   498                           ;mcc_generated_files/mcc.c: 53:     PMD_Initialize();
+   499  0006DA  EC30  F003         	call	_PMD_Initialize	;wreg free
+   500  0006DE                     
+   501                           ;mcc_generated_files/mcc.c: 54:     PIN_MANAGER_Initialize();
+   502  0006DE  ECE6  F002         	call	_PIN_MANAGER_Initialize	;wreg free
+   503  0006E2                     
+   504                           ;mcc_generated_files/mcc.c: 55:     OSCILLATOR_Initialize();
+   505  0006E2  EC5F  F003         	call	_OSCILLATOR_Initialize	;wreg free
+   506  0006E6                     
+   507                           ;mcc_generated_files/mcc.c: 56:     ECAN_Initialize();
+   508  0006E6  EC08  F002         	call	_ECAN_Initialize	;wreg free
+   509  0006EA  0012               	return		;funcret
+   510  0006EC                     __end_of_SYSTEM_Initialize:
+   511                           	callstack 0
+   512                           
+   513 ;; *************** function _PMD_Initialize *****************
+   514 ;; Defined at:
+   515 ;;		line 73 in file "mcc_generated_files/mcc.c"
+   516 ;; Parameters:    Size  Location     Type
+   517 ;;		None
+   518 ;; Auto vars:     Size  Location     Type
+   519 ;;		None
+   520 ;; Return value:  Size  Location     Type
+   521 ;;                  1    wreg      void 
+   522 ;; Registers used:
+   523 ;;		wreg, status,2
+   524 ;; Tracked objects:
+   525 ;;		On entry : 0/0
+   526 ;;		On exit  : 0/0
+   527 ;;		Unchanged: 0/0
+   528 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   529 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   530 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   531 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   532 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   533 ;;Total ram usage:        0 bytes
+   534 ;; Hardware stack levels used: 1
+   535 ;; Hardware stack levels required when called: 3
+   536 ;; This function calls:
+   537 ;;		Nothing
+   538 ;; This function is called by:
+   539 ;;		_SYSTEM_Initialize
+   540 ;; This function uses a non-reentrant model
+   541 ;;
+   542                           
+   543                           	psect	text2
+   544  000660                     __ptext2:
+   545                           	callstack 0
+   546  000660                     _PMD_Initialize:
+   547                           	callstack 26
+   548  000660                     
+   549                           ;mcc_generated_files/mcc.c: 76:     PMD0 = 0x00;
+   550  000660  0E00               	movlw	0
+   551  000662  0139               	movlb	57	; () banked
+   552  000664  6FC0               	movwf	192,b	;volatile
+   553                           
+   554                           ;mcc_generated_files/mcc.c: 78:     PMD1 = 0x00;
+   555  000666  0E00               	movlw	0
+   556  000668  6FC1               	movwf	193,b	;volatile
+   557                           
+   558                           ;mcc_generated_files/mcc.c: 80:     PMD2 = 0x00;
+   559  00066A  0E00               	movlw	0
+   560  00066C  6FC2               	movwf	194,b	;volatile
+   561                           
+   562                           ;mcc_generated_files/mcc.c: 82:     PMD3 = 0x00;
+   563  00066E  0E00               	movlw	0
+   564  000670  6FC3               	movwf	195,b	;volatile
+   565                           
+   566                           ;mcc_generated_files/mcc.c: 84:     PMD4 = 0x00;
+   567  000672  0E00               	movlw	0
+   568  000674  6FC4               	movwf	196,b	;volatile
+   569                           
+   570                           ;mcc_generated_files/mcc.c: 86:     PMD5 = 0x00;
+   571  000676  0E00               	movlw	0
+   572  000678  6FC5               	movwf	197,b	;volatile
+   573                           
+   574                           ;mcc_generated_files/mcc.c: 88:     PMD6 = 0x00;
+   575  00067A  0E00               	movlw	0
+   576  00067C  6FC6               	movwf	198,b	;volatile
+   577                           
+   578                           ;mcc_generated_files/mcc.c: 90:     PMD7 = 0x00;
+   579  00067E  0E00               	movlw	0
+   580  000680  6FC7               	movwf	199,b	;volatile
+   581  000682                     
+   582                           ; BSR set to: 57
+   583  000682  0012               	return		;funcret
+   584  000684                     __end_of_PMD_Initialize:
+   585                           	callstack 0
+   586                           
+   587 ;; *************** function _PIN_MANAGER_Initialize *****************
+   588 ;; Defined at:
+   589 ;;		line 55 in file "mcc_generated_files/pin_manager.c"
+   590 ;; Parameters:    Size  Location     Type
+   591 ;;		None
+   592 ;; Auto vars:     Size  Location     Type
+   593 ;;		None
+   594 ;; Return value:  Size  Location     Type
+   595 ;;                  1    wreg      void 
+   596 ;; Registers used:
+   597 ;;		wreg, status,2
+   598 ;; Tracked objects:
+   599 ;;		On entry : 0/0
+   600 ;;		On exit  : 0/0
+   601 ;;		Unchanged: 0/0
+   602 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   603 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   604 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   605 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   606 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   607 ;;Total ram usage:        0 bytes
+   608 ;; Hardware stack levels used: 1
+   609 ;; Hardware stack levels required when called: 3
+   610 ;; This function calls:
+   611 ;;		Nothing
+   612 ;; This function is called by:
+   613 ;;		_SYSTEM_Initialize
+   614 ;; This function uses a non-reentrant model
+   615 ;;
+   616                           
+   617                           	psect	text3
+   618  0005CC                     __ptext3:
+   619                           	callstack 0
+   620  0005CC                     _PIN_MANAGER_Initialize:
+   621                           	callstack 26
+   622  0005CC                     
+   623                           ;mcc_generated_files/pin_manager.c: 60:     LATA = 0x00;
+   624  0005CC  0E00               	movlw	0
+   625  0005CE  6EBA               	movwf	186,c	;volatile
+   626                           
+   627                           ;mcc_generated_files/pin_manager.c: 61:     LATB = 0x00;
+   628  0005D0  0E00               	movlw	0
+   629  0005D2  6EBB               	movwf	187,c	;volatile
+   630                           
+   631                           ;mcc_generated_files/pin_manager.c: 62:     LATC = 0x00;
+   632  0005D4  0E00               	movlw	0
+   633  0005D6  6EBC               	movwf	188,c	;volatile
+   634                           
+   635                           ;mcc_generated_files/pin_manager.c: 67:     TRISA = 0xBF;
+   636  0005D8  0EBF               	movlw	191
+   637  0005DA  6EC2               	movwf	194,c	;volatile
+   638                           
+   639                           ;mcc_generated_files/pin_manager.c: 68:     TRISB = 0xEF;
+   640  0005DC  0EEF               	movlw	239
+   641  0005DE  6EC3               	movwf	195,c	;volatile
+   642  0005E0                     
+   643                           ;mcc_generated_files/pin_manager.c: 69:     TRISC = 0xFF;
+   644  0005E0  68C4               	setf	196,c	;volatile
+   645  0005E2                     
+   646                           ;mcc_generated_files/pin_manager.c: 74:     ANSELC = 0xFF;
+   647  0005E2  013A               	movlb	58	; () banked
+   648  0005E4  6960               	setf	96,b	;volatile
+   649                           
+   650                           ;mcc_generated_files/pin_manager.c: 75:     ANSELB = 0xE7;
+   651  0005E6  0EE7               	movlw	231
+   652  0005E8  6F50               	movwf	80,b	;volatile
+   653                           
+   654                           ;mcc_generated_files/pin_manager.c: 76:     ANSELA = 0xBF;
+   655  0005EA  0EBF               	movlw	191
+   656  0005EC  6F40               	movwf	64,b	;volatile
+   657                           
+   658                           ;mcc_generated_files/pin_manager.c: 81:     WPUE = 0x00;
+   659  0005EE  0E00               	movlw	0
+   660  0005F0  6F81               	movwf	129,b	;volatile
+   661                           
+   662                           ;mcc_generated_files/pin_manager.c: 82:     WPUB = 0x00;
+   663  0005F2  0E00               	movlw	0
+   664  0005F4  6F51               	movwf	81,b	;volatile
+   665                           
+   666                           ;mcc_generated_files/pin_manager.c: 83:     WPUA = 0x00;
+   667  0005F6  0E00               	movlw	0
+   668  0005F8  6F41               	movwf	65,b	;volatile
+   669                           
+   670                           ;mcc_generated_files/pin_manager.c: 84:     WPUC = 0x00;
+   671  0005FA  0E00               	movlw	0
+   672  0005FC  6F61               	movwf	97,b	;volatile
+   673                           
+   674                           ;mcc_generated_files/pin_manager.c: 89:     ODCONA = 0x00;
+   675  0005FE  0E00               	movlw	0
+   676  000600  6F42               	movwf	66,b	;volatile
+   677                           
+   678                           ;mcc_generated_files/pin_manager.c: 90:     ODCONB = 0x00;
+   679  000602  0E00               	movlw	0
+   680  000604  6F52               	movwf	82,b	;volatile
+   681                           
+   682                           ;mcc_generated_files/pin_manager.c: 91:     ODCONC = 0x00;
+   683  000606  0E00               	movlw	0
+   684  000608  6F62               	movwf	98,b	;volatile
+   685  00060A                     
+   686                           ; BSR set to: 58
+   687                           ;mcc_generated_files/pin_manager.c: 96:     SLRCONA = 0xFF;
+   688  00060A  6943               	setf	67,b	;volatile
+   689  00060C                     
+   690                           ; BSR set to: 58
+   691                           ;mcc_generated_files/pin_manager.c: 97:     SLRCONB = 0xFF;
+   692  00060C  6953               	setf	83,b	;volatile
+   693  00060E                     
+   694                           ; BSR set to: 58
+   695                           ;mcc_generated_files/pin_manager.c: 98:     SLRCONC = 0xFF;
+   696  00060E  6963               	setf	99,b	;volatile
+   697  000610                     
+   698                           ; BSR set to: 58
+   699                           ;mcc_generated_files/pin_manager.c: 103:     INLVLA = 0xFF;
+   700  000610  6944               	setf	68,b	;volatile
+   701  000612                     
+   702                           ; BSR set to: 58
+   703                           ;mcc_generated_files/pin_manager.c: 104:     INLVLB = 0xFF;
+   704  000612  6954               	setf	84,b	;volatile
+   705  000614                     
+   706                           ; BSR set to: 58
+   707                           ;mcc_generated_files/pin_manager.c: 105:     INLVLC = 0xFF;
+   708  000614  6964               	setf	100,b	;volatile
+   709                           
+   710                           ;mcc_generated_files/pin_manager.c: 106:     INLVLE = 0x08;
+   711  000616  0E08               	movlw	8
+   712  000618  6F84               	movwf	132,b	;volatile
+   713                           
+   714                           ;mcc_generated_files/pin_manager.c: 115:     CANRXPPS = 0x0B;
+   715  00061A  0E0B               	movlw	11
+   716  00061C  6FED               	movwf	237,b	;volatile
+   717                           
+   718                           ;mcc_generated_files/pin_manager.c: 116:     RB4PPS = 0x33;
+   719  00061E  0E33               	movlw	51
+   720  000620  6F0C               	movwf	12,b	;volatile
+   721  000622                     
+   722                           ; BSR set to: 58
+   723  000622  0012               	return		;funcret
+   724  000624                     __end_of_PIN_MANAGER_Initialize:
+   725                           	callstack 0
+   726                           
+   727 ;; *************** function _OSCILLATOR_Initialize *****************
+   728 ;; Defined at:
+   729 ;;		line 59 in file "mcc_generated_files/mcc.c"
+   730 ;; Parameters:    Size  Location     Type
+   731 ;;		None
+   732 ;; Auto vars:     Size  Location     Type
+   733 ;;		None
+   734 ;; Return value:  Size  Location     Type
+   735 ;;                  1    wreg      void 
+   736 ;; Registers used:
+   737 ;;		wreg, status,2
+   738 ;; Tracked objects:
+   739 ;;		On entry : 0/0
+   740 ;;		On exit  : 0/0
+   741 ;;		Unchanged: 0/0
+   742 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   743 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   744 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   745 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   746 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   747 ;;Total ram usage:        0 bytes
+   748 ;; Hardware stack levels used: 1
+   749 ;; Hardware stack levels required when called: 3
+   750 ;; This function calls:
+   751 ;;		Nothing
+   752 ;; This function is called by:
+   753 ;;		_SYSTEM_Initialize
+   754 ;; This function uses a non-reentrant model
+   755 ;;
+   756                           
+   757                           	psect	text4
+   758  0006BE                     __ptext4:
+   759                           	callstack 0
+   760  0006BE                     _OSCILLATOR_Initialize:
+   761                           	callstack 26
+   762  0006BE                     
+   763                           ;mcc_generated_files/mcc.c: 62:     OSCCON1 = 0x70;
+   764  0006BE  0E70               	movlw	112
+   765  0006C0  0139               	movlb	57	; () banked
+   766  0006C2  6FD9               	movwf	217,b	;volatile
+   767                           
+   768                           ;mcc_generated_files/mcc.c: 64:     OSCCON3 = 0x00;
+   769  0006C4  0E00               	movlw	0
+   770  0006C6  6FDB               	movwf	219,b	;volatile
+   771                           
+   772                           ;mcc_generated_files/mcc.c: 66:     OSCEN = 0x00;
+   773  0006C8  0E00               	movlw	0
+   774  0006CA  6FDD               	movwf	221,b	;volatile
+   775                           
+   776                           ;mcc_generated_files/mcc.c: 68:     OSCFRQ = 0x02;
+   777  0006CC  0E02               	movlw	2
+   778  0006CE  6FDF               	movwf	223,b	;volatile
+   779                           
+   780                           ;mcc_generated_files/mcc.c: 70:     OSCTUNE = 0x00;
+   781  0006D0  0E00               	movlw	0
+   782  0006D2  6FDE               	movwf	222,b	;volatile
+   783  0006D4                     
+   784                           ; BSR set to: 57
+   785  0006D4  0012               	return		;funcret
+   786  0006D6                     __end_of_OSCILLATOR_Initialize:
+   787                           	callstack 0
+   788                           
+   789 ;; *************** function _INTERRUPT_Initialize *****************
+   790 ;; Defined at:
+   791 ;;		line 52 in file "mcc_generated_files/interrupt_manager.c"
+   792 ;; Parameters:    Size  Location     Type
+   793 ;;		None
+   794 ;; Auto vars:     Size  Location     Type
+   795 ;;		None
+   796 ;; Return value:  Size  Location     Type
+   797 ;;                  1    wreg      void 
+   798 ;; Registers used:
+   799 ;;		None
+   800 ;; Tracked objects:
+   801 ;;		On entry : 0/0
+   802 ;;		On exit  : 0/0
+   803 ;;		Unchanged: 0/0
+   804 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   805 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   806 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   807 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   808 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   809 ;;Total ram usage:        0 bytes
+   810 ;; Hardware stack levels used: 1
+   811 ;; Hardware stack levels required when called: 3
+   812 ;; This function calls:
+   813 ;;		Nothing
+   814 ;; This function is called by:
+   815 ;;		_SYSTEM_Initialize
+   816 ;; This function uses a non-reentrant model
+   817 ;;
+   818                           
+   819                           	psect	text5
+   820  0006F6                     __ptext5:
+   821                           	callstack 0
+   822  0006F6                     _INTERRUPT_Initialize:
+   823                           	callstack 26
+   824  0006F6                     
+   825                           ;mcc_generated_files/interrupt_manager.c: 55:     INTCON0bits.IPEN = 0;
+   826  0006F6  9AD2               	bcf	210,5,c	;volatile
+   827  0006F8  0012               	return		;funcret
+   828  0006FA                     __end_of_INTERRUPT_Initialize:
+   829                           	callstack 0
+   830                           
+   831 ;; *************** function _ECAN_Initialize *****************
+   832 ;; Defined at:
+   833 ;;		line 65 in file "mcc_generated_files/ecan.c"
+   834 ;; Parameters:    Size  Location     Type
+   835 ;;		None
+   836 ;; Auto vars:     Size  Location     Type
+   837 ;;		None
+   838 ;; Return value:  Size  Location     Type
+   839 ;;                  1    wreg      void 
+   840 ;; Registers used:
+   841 ;;		wreg, status,2, status,0, cstack
+   842 ;; Tracked objects:
+   843 ;;		On entry : 0/0
+   844 ;;		On exit  : 0/0
+   845 ;;		Unchanged: 0/0
+   846 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   847 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   848 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   849 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   850 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   851 ;;Total ram usage:        1 bytes
+   852 ;; Hardware stack levels used: 1
+   853 ;; Hardware stack levels required when called: 4
+   854 ;; This function calls:
+   855 ;;		_ECAN_SetWakeUpInterruptHandler
+   856 ;; This function is called by:
+   857 ;;		_SYSTEM_Initialize
+   858 ;; This function uses a non-reentrant model
+   859 ;;
+   860                           
+   861                           	psect	text6
+   862  000410                     __ptext6:
+   863                           	callstack 0
+   864  000410                     _ECAN_Initialize:
+   865                           	callstack 25
+   866  000410                     
+   867                           ;mcc_generated_files/ecan.c: 67:     CANCON = 0x80;
+   868  000410  0E80               	movlw	128
+   869  000412  6E8F               	movwf	143,c	;volatile
+   870  000414                     l1480:
+   871  000414  508E               	movf	142,w,c	;volatile
+   872  000416  0BE0               	andlw	224
+   873  000418  0A80               	xorlw	128
+   874  00041A  A4D8               	btfss	status,2,c
+   875  00041C  EF12  F002         	goto	u261
+   876  000420  EF14  F002         	goto	u260
+   877  000424                     u261:
+   878  000424  EF0A  F002         	goto	l1480
+   879  000428                     u260:
+   880  000428                     
+   881                           ;mcc_generated_files/ecan.c: 73:     ECANCON = 0x00;
+   882  000428  0E00               	movlw	0
+   883  00042A  6E91               	movwf	145,c	;volatile
+   884                           
+   885                           ;mcc_generated_files/ecan.c: 78:     CIOCON = 0x00;
+   886  00042C  0E00               	movlw	0
+   887  00042E  0137               	movlb	55	; () banked
+   888  000430  6F00               	movwf	0,b	;volatile
+   889                           
+   890                           ;mcc_generated_files/ecan.c: 91:     RXM0EIDH = 0x00;
+   891  000432  0E00               	movlw	0
+   892  000434  6FBA               	movwf	186,b	;volatile
+   893                           
+   894                           ;mcc_generated_files/ecan.c: 92:     RXM0EIDL = 0x00;
+   895  000436  0E00               	movlw	0
+   896  000438  6FBB               	movwf	187,b	;volatile
+   897                           
+   898                           ;mcc_generated_files/ecan.c: 93:     RXM0SIDH = 0x00;
+   899  00043A  0E00               	movlw	0
+   900  00043C  6FB8               	movwf	184,b	;volatile
+   901                           
+   902                           ;mcc_generated_files/ecan.c: 94:     RXM0SIDL = 0x00;
+   903  00043E  0E00               	movlw	0
+   904  000440  6FB9               	movwf	185,b	;volatile
+   905                           
+   906                           ;mcc_generated_files/ecan.c: 95:     RXM1EIDH = 0x00;
+   907  000442  0E00               	movlw	0
+   908  000444  6FBE               	movwf	190,b	;volatile
+   909                           
+   910                           ;mcc_generated_files/ecan.c: 96:     RXM1EIDL = 0x00;
+   911  000446  0E00               	movlw	0
+   912  000448  6FBF               	movwf	191,b	;volatile
+   913                           
+   914                           ;mcc_generated_files/ecan.c: 97:     RXM1SIDH = 0x00;
+   915  00044A  0E00               	movlw	0
+   916  00044C  6FBC               	movwf	188,b	;volatile
+   917                           
+   918                           ;mcc_generated_files/ecan.c: 98:     RXM1SIDL = 0x00;
+   919  00044E  0E00               	movlw	0
+   920  000450  6FBD               	movwf	189,b	;volatile
+   921                           
+   922                           ;mcc_generated_files/ecan.c: 103:     RXF0EIDH = 0x00;
+   923  000452  0E00               	movlw	0
+   924  000454  6FA2               	movwf	162,b	;volatile
+   925                           
+   926                           ;mcc_generated_files/ecan.c: 104:     RXF0EIDL = 0x00;
+   927  000456  0E00               	movlw	0
+   928  000458  6FA3               	movwf	163,b	;volatile
+   929                           
+   930                           ;mcc_generated_files/ecan.c: 105:     RXF0SIDH = 0x00;
+   931  00045A  0E00               	movlw	0
+   932  00045C  6FA0               	movwf	160,b	;volatile
+   933                           
+   934                           ;mcc_generated_files/ecan.c: 106:     RXF0SIDL = 0x00;
+   935  00045E  0E00               	movlw	0
+   936  000460  6FA1               	movwf	161,b	;volatile
+   937                           
+   938                           ;mcc_generated_files/ecan.c: 107:     RXF1EIDH = 0x00;
+   939  000462  0E00               	movlw	0
+   940  000464  6FA6               	movwf	166,b	;volatile
+   941                           
+   942                           ;mcc_generated_files/ecan.c: 108:     RXF1EIDL = 0x00;
+   943  000466  0E00               	movlw	0
+   944  000468  6FA7               	movwf	167,b	;volatile
+   945                           
+   946                           ;mcc_generated_files/ecan.c: 109:     RXF1SIDH = 0x00;
+   947  00046A  0E00               	movlw	0
+   948  00046C  6FA4               	movwf	164,b	;volatile
+   949                           
+   950                           ;mcc_generated_files/ecan.c: 110:     RXF1SIDL = 0x00;
+   951  00046E  0E00               	movlw	0
+   952  000470  6FA5               	movwf	165,b	;volatile
+   953                           
+   954                           ;mcc_generated_files/ecan.c: 111:     RXF2EIDH = 0x00;
+   955  000472  0E00               	movlw	0
+   956  000474  6FAA               	movwf	170,b	;volatile
+   957                           
+   958                           ;mcc_generated_files/ecan.c: 112:     RXF2EIDL = 0x00;
+   959  000476  0E00               	movlw	0
+   960  000478  6FAB               	movwf	171,b	;volatile
+   961                           
+   962                           ;mcc_generated_files/ecan.c: 113:     RXF2SIDH = 0x00;
+   963  00047A  0E00               	movlw	0
+   964  00047C  6FA8               	movwf	168,b	;volatile
+   965                           
+   966                           ;mcc_generated_files/ecan.c: 114:     RXF2SIDL = 0x00;
+   967  00047E  0E00               	movlw	0
+   968  000480  6FA9               	movwf	169,b	;volatile
+   969                           
+   970                           ;mcc_generated_files/ecan.c: 115:     RXF3EIDH = 0x00;
+   971  000482  0E00               	movlw	0
+   972  000484  6FAE               	movwf	174,b	;volatile
+   973                           
+   974                           ;mcc_generated_files/ecan.c: 116:     RXF3EIDL = 0x00;
+   975  000486  0E00               	movlw	0
+   976  000488  6FAF               	movwf	175,b	;volatile
+   977                           
+   978                           ;mcc_generated_files/ecan.c: 117:     RXF3SIDH = 0x00;
+   979  00048A  0E00               	movlw	0
+   980  00048C  6FAC               	movwf	172,b	;volatile
+   981                           
+   982                           ;mcc_generated_files/ecan.c: 118:     RXF3SIDL = 0x00;
+   983  00048E  0E00               	movlw	0
+   984  000490  6FAD               	movwf	173,b	;volatile
+   985                           
+   986                           ;mcc_generated_files/ecan.c: 119:     RXF4EIDH = 0x00;
+   987  000492  0E00               	movlw	0
+   988  000494  6FB2               	movwf	178,b	;volatile
+   989                           
+   990                           ;mcc_generated_files/ecan.c: 120:     RXF4EIDL = 0x00;
+   991  000496  0E00               	movlw	0
+   992  000498  6FB3               	movwf	179,b	;volatile
+   993                           
+   994                           ;mcc_generated_files/ecan.c: 121:     RXF4SIDH = 0x00;
+   995  00049A  0E00               	movlw	0
+   996  00049C  6FB0               	movwf	176,b	;volatile
+   997                           
+   998                           ;mcc_generated_files/ecan.c: 122:     RXF4SIDL = 0x00;
+   999  00049E  0E00               	movlw	0
+  1000  0004A0  6FB1               	movwf	177,b	;volatile
+  1001                           
+  1002                           ;mcc_generated_files/ecan.c: 123:     RXF5EIDH = 0x00;
+  1003  0004A2  0E00               	movlw	0
+  1004  0004A4  6FB6               	movwf	182,b	;volatile
+  1005                           
+  1006                           ;mcc_generated_files/ecan.c: 124:     RXF5EIDL = 0x00;
+  1007  0004A6  0E00               	movlw	0
+  1008  0004A8  6FB7               	movwf	183,b	;volatile
+  1009                           
+  1010                           ;mcc_generated_files/ecan.c: 125:     RXF5SIDH = 0x00;
+  1011  0004AA  0E00               	movlw	0
+  1012  0004AC  6FB4               	movwf	180,b	;volatile
+  1013                           
+  1014                           ;mcc_generated_files/ecan.c: 126:     RXF5SIDL = 0x00;
+  1015  0004AE  0E00               	movlw	0
+  1016  0004B0  6FB5               	movwf	181,b	;volatile
+  1017                           
+  1018                           ;mcc_generated_files/ecan.c: 141:     BRGCON1 = 0x00;
+  1019  0004B2  0E00               	movlw	0
+  1020  0004B4  6F03               	movwf	3,b	;volatile
+  1021                           
+  1022                           ;mcc_generated_files/ecan.c: 142:     BRGCON2 = 0xBF;
+  1023  0004B6  0EBF               	movlw	191
+  1024  0004B8  6F04               	movwf	4,b	;volatile
+  1025                           
+  1026                           ;mcc_generated_files/ecan.c: 143:     BRGCON3 = 0x07;
+  1027  0004BA  0E07               	movlw	7
+  1028  0004BC  6F05               	movwf	5,b	;volatile
+  1029  0004BE                     
+  1030                           ; BSR set to: 55
+  1031                           ;mcc_generated_files/ecan.c: 145:     ECAN_SetWakeUpInterruptHandler(WakeUpDefaultInterr
+      +                          uptHandler);
+  1032  0004BE  0EFA               	movlw	low _WakeUpDefaultInterruptHandler
+  1033  0004C0  6E03               	movwf	ECAN_SetWakeUpInterruptHandler@handler^0,c
+  1034  0004C2  0E06               	movlw	high _WakeUpDefaultInterruptHandler
+  1035  0004C4  6E04               	movwf	(ECAN_SetWakeUpInterruptHandler@handler+1)^0,c
+  1036  0004C6  EC76  F003         	call	_ECAN_SetWakeUpInterruptHandler	;wreg free
+  1037  0004CA                     
+  1038                           ;mcc_generated_files/ecan.c: 146:     PIR5bits.WAKIF = 0;
+  1039  0004CA  0139               	movlb	57	; () banked
+  1040  0004CC  9DA5               	bcf	165,6,b	;volatile
+  1041  0004CE                     
+  1042                           ; BSR set to: 57
+  1043                           ;mcc_generated_files/ecan.c: 147:     PIE5bits.WAKIE = 1;
+  1044  0004CE  8D95               	bsf	149,6,b	;volatile
+  1045  0004D0                     
+  1046                           ; BSR set to: 57
+  1047                           ;mcc_generated_files/ecan.c: 149:     CANCON = 0x00;
+  1048  0004D0  0E00               	movlw	0
+  1049  0004D2  6E8F               	movwf	143,c	;volatile
+  1050  0004D4                     l1492:
+  1051  0004D4  006F FE38  F005    	movff	16270,??_ECAN_Initialize	;volatile
+  1052  0004DA  0EE0               	movlw	224
+  1053  0004DC  1605               	andwf	??_ECAN_Initialize^0,f,c
+  1054  0004DE  A4D8               	btfss	status,2,c
+  1055  0004E0  EF74  F002         	goto	u271
+  1056  0004E4  EF76  F002         	goto	u270
+  1057  0004E8                     u271:
+  1058  0004E8  EF6A  F002         	goto	l1492
+  1059  0004EC                     u270:
+  1060  0004EC  0012               	return		;funcret
+  1061  0004EE                     __end_of_ECAN_Initialize:
+  1062                           	callstack 0
+  1063                           
+  1064 ;; *************** function _ECAN_SetWakeUpInterruptHandler *****************
+  1065 ;; Defined at:
+  1066 ;;		line 439 in file "mcc_generated_files/ecan.c"
+  1067 ;; Parameters:    Size  Location     Type
+  1068 ;;  handler         2    2[COMRAM] PTR FTN()void 
+  1069 ;;		 -> WakeUpDefaultInterruptHandler(1), 
+  1070 ;; Auto vars:     Size  Location     Type
+  1071 ;;		None
+  1072 ;; Return value:  Size  Location     Type
+  1073 ;;                  1    wreg      void 
+  1074 ;; Registers used:
+  1075 ;;		wreg, status,2, status,0
+  1076 ;; Tracked objects:
+  1077 ;;		On entry : 0/0
+  1078 ;;		On exit  : 0/0
+  1079 ;;		Unchanged: 0/0
+  1080 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1081 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1082 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1083 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1084 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1085 ;;Total ram usage:        2 bytes
+  1086 ;; Hardware stack levels used: 1
+  1087 ;; Hardware stack levels required when called: 3
+  1088 ;; This function calls:
+  1089 ;;		Nothing
+  1090 ;; This function is called by:
+  1091 ;;		_ECAN_Initialize
+  1092 ;; This function uses a non-reentrant model
+  1093 ;;
+  1094                           
+  1095                           	psect	text7
+  1096  0006EC                     __ptext7:
+  1097                           	callstack 0
+  1098  0006EC                     _ECAN_SetWakeUpInterruptHandler:
+  1099                           	callstack 25
+  1100  0006EC                     
+  1101                           ;mcc_generated_files/ecan.c: 439: void ECAN_SetWakeUpInterruptHandler(void (*handler)(vo
+      +                          id));mcc_generated_files/ecan.c: 440: {;mcc_generated_files/ecan.c: 441:     WakeUpInter
+      +                          ruptHandler = handler;
+  1102  0006EC  C003  F02C         	movff	ECAN_SetWakeUpInterruptHandler@handler,_WakeUpInterruptHandler
+  1103  0006F0  C004  F02D         	movff	ECAN_SetWakeUpInterruptHandler@handler+1,_WakeUpInterruptHandler+1
+  1104  0006F4  0012               	return		;funcret
+  1105  0006F6                     __end_of_ECAN_SetWakeUpInterruptHandler:
+  1106                           	callstack 0
+  1107                           
+  1108 ;; *************** function _CAN_receive *****************
+  1109 ;; Defined at:
+  1110 ;;		line 243 in file "mcc_generated_files/ecan.c"
+  1111 ;; Parameters:    Size  Location     Type
+  1112 ;;  tempCanMsg      2   21[COMRAM] PTR struct .
+  1113 ;;		 -> main@tempCanMsg(14), 
+  1114 ;; Auto vars:     Size  Location     Type
+  1115 ;;  returnValue     1   23[COMRAM] unsigned char 
+  1116 ;; Return value:  Size  Location     Type
+  1117 ;;                  1    wreg      unsigned char 
+  1118 ;; Registers used:
+  1119 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+  1120 ;; Tracked objects:
+  1121 ;;		On entry : 0/0
+  1122 ;;		On exit  : 0/0
+  1123 ;;		Unchanged: 0/0
+  1124 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1125 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1126 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1127 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1128 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1129 ;;Total ram usage:        3 bytes
+  1130 ;; Hardware stack levels used: 1
+  1131 ;; Hardware stack levels required when called: 4
+  1132 ;; This function calls:
+  1133 ;;		_convertReg2ExtendedCANid
+  1134 ;;		_convertReg2StandardCANid
+  1135 ;; This function is called by:
+  1136 ;;		_main
+  1137 ;; This function uses a non-reentrant model
+  1138 ;;
+  1139                           
+  1140                           	psect	text8
+  1141  00001E                     __ptext8:
+  1142                           	callstack 0
+  1143  00001E                     _CAN_receive:
+  1144                           	callstack 26
+  1145  00001E                     
+  1146                           ;mcc_generated_files/ecan.c: 243: uint8_t CAN_receive(uCAN_MSG *tempCanMsg);mcc_generate
+      +                          d_files/ecan.c: 244: {;mcc_generated_files/ecan.c: 245:     uint8_t returnValue = 0;
+  1147  00001E  0E00               	movlw	0
+  1148  000020  6E18               	movwf	CAN_receive@returnValue^0,c
+  1149  000022                     
+  1150                           ;mcc_generated_files/ecan.c: 248:     if (RXB0CONbits.RXFUL != 0)
+  1151  000022  AE80               	btfss	128,7,c	;volatile
+  1152  000024  EF16  F000         	goto	u301
+  1153  000028  EF18  F000         	goto	u300
+  1154  00002C                     u301:
+  1155  00002C  EFBD  F000         	goto	l308
+  1156  000030                     u300:
+  1157  000030                     
+  1158                           ;mcc_generated_files/ecan.c: 249:     {;mcc_generated_files/ecan.c: 250:         if ((RX
+      +                          B0SIDL & 0x08) == 0x08)
+  1159  000030  A682               	btfss	130,3,c	;volatile
+  1160  000032  EF1D  F000         	goto	u311
+  1161  000036  EF1F  F000         	goto	u310
+  1162  00003A                     u311:
+  1163  00003A  EF47  F000         	goto	l1550
+  1164  00003E                     u310:
+  1165  00003E                     
+  1166                           ;mcc_generated_files/ecan.c: 251:         {;mcc_generated_files/ecan.c: 253:            
+      +                           tempCanMsg->frame.idType = (uint8_t) 2;
+  1167  00003E  0060  F05B  FFD9   	movff	CAN_receive@tempCanMsg,fsr2l
+  1168  000044  0060  F05F  FFDA   	movff	CAN_receive@tempCanMsg+1,fsr2h
+  1169  00004A  0E02               	movlw	2
+  1170  00004C  6EDF               	movwf	indf2,c
+  1171  00004E                     
+  1172                           ;mcc_generated_files/ecan.c: 254:             tempCanMsg->frame.id = convertReg2Extended
+      +                          CANid(RXB0EIDH, RXB0EIDL, RXB0SIDH, RXB0SIDL);
+  1173  00004E  006F FE10  F003    	movff	16260,convertReg2ExtendedCANid@tempRXBn_EIDL	;volatile
+  1174  000054  006F FE04  F004    	movff	16257,convertReg2ExtendedCANid@tempRXBn_SIDH	;volatile
+  1175  00005A  006F FE08  F005    	movff	16258,convertReg2ExtendedCANid@tempRXBn_SIDL	;volatile
+  1176  000060  5083               	movf	131,w,c	;volatile
+  1177  000062  EC6B  F001         	call	_convertReg2ExtendedCANid
+  1178  000066  EE20 F001          	lfsr	2,1
+  1179  00006A  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1180  00006C  26D9               	addwf	fsr2l,f,c
+  1181  00006E  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1182  000070  22DA               	addwfc	fsr2h,f,c
+  1183  000072  0060  F00F  FFDE   	movff	?_convertReg2ExtendedCANid,postinc2
+  1184  000078  0060  F013  FFDE   	movff	?_convertReg2ExtendedCANid+1,postinc2
+  1185  00007E  0060  F017  FFDE   	movff	?_convertReg2ExtendedCANid+2,postinc2
+  1186  000084  0060  F01B  FFDE   	movff	?_convertReg2ExtendedCANid+3,postinc2
+  1187                           
+  1188                           ;mcc_generated_files/ecan.c: 255:         }
+  1189  00008A  EF67  F000         	goto	l1554
+  1190  00008E                     l1550:
+  1191                           
+  1192                           ;mcc_generated_files/ecan.c: 257:         {;mcc_generated_files/ecan.c: 259:            
+      +                           tempCanMsg->frame.idType = (uint8_t) 1;
+  1193  00008E  0060  F05B  FFD9   	movff	CAN_receive@tempCanMsg,fsr2l
+  1194  000094  0060  F05F  FFDA   	movff	CAN_receive@tempCanMsg+1,fsr2h
+  1195  00009A  0E01               	movlw	1
+  1196  00009C  6EDF               	movwf	indf2,c
+  1197  00009E                     
+  1198                           ;mcc_generated_files/ecan.c: 260:             tempCanMsg->frame.id = convertReg2Standard
+      +                          CANid(RXB0SIDH, RXB0SIDL);
+  1199  00009E  006F FE08  F003    	movff	16258,convertReg2StandardCANid@tempRXBn_SIDL	;volatile
+  1200  0000A4  5081               	movf	129,w,c	;volatile
+  1201  0000A6  EC77  F002         	call	_convertReg2StandardCANid
+  1202  0000AA  EE20 F001          	lfsr	2,1
+  1203  0000AE  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1204  0000B0  26D9               	addwf	fsr2l,f,c
+  1205  0000B2  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1206  0000B4  22DA               	addwfc	fsr2h,f,c
+  1207  0000B6  0060  F00F  FFDE   	movff	?_convertReg2StandardCANid,postinc2
+  1208  0000BC  0060  F013  FFDE   	movff	?_convertReg2StandardCANid+1,postinc2
+  1209  0000C2  0060  F017  FFDE   	movff	?_convertReg2StandardCANid+2,postinc2
+  1210  0000C8  0060  F01B  FFDE   	movff	?_convertReg2StandardCANid+3,postinc2
+  1211  0000CE                     l1554:
+  1212                           
+  1213                           ;mcc_generated_files/ecan.c: 263:         tempCanMsg->frame.dlc = RXB0DLC;
+  1214  0000CE  EE20 F005          	lfsr	2,5
+  1215  0000D2  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1216  0000D4  26D9               	addwf	fsr2l,f,c
+  1217  0000D6  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1218  0000D8  22DA               	addwfc	fsr2h,f,c
+  1219  0000DA  006F FE17 FFDF     	movff	16261,indf2	;volatile
+  1220  0000E0                     
+  1221                           ;mcc_generated_files/ecan.c: 264:         tempCanMsg->frame.data0 = RXB0D0;
+  1222  0000E0  EE20 F006          	lfsr	2,6
+  1223  0000E4  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1224  0000E6  26D9               	addwf	fsr2l,f,c
+  1225  0000E8  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1226  0000EA  22DA               	addwfc	fsr2h,f,c
+  1227  0000EC  006F FE1B FFDF     	movff	16262,indf2	;volatile
+  1228  0000F2                     
+  1229                           ;mcc_generated_files/ecan.c: 265:         tempCanMsg->frame.data1 = RXB0D1;
+  1230  0000F2  EE20 F007          	lfsr	2,7
+  1231  0000F6  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1232  0000F8  26D9               	addwf	fsr2l,f,c
+  1233  0000FA  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1234  0000FC  22DA               	addwfc	fsr2h,f,c
+  1235  0000FE  006F FE1F FFDF     	movff	16263,indf2	;volatile
+  1236  000104                     
+  1237                           ;mcc_generated_files/ecan.c: 266:         tempCanMsg->frame.data2 = RXB0D2;
+  1238  000104  EE20 F008          	lfsr	2,8
+  1239  000108  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1240  00010A  26D9               	addwf	fsr2l,f,c
+  1241  00010C  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1242  00010E  22DA               	addwfc	fsr2h,f,c
+  1243  000110  006F FE23 FFDF     	movff	16264,indf2	;volatile
+  1244  000116                     
+  1245                           ;mcc_generated_files/ecan.c: 267:         tempCanMsg->frame.data3 = RXB0D3;
+  1246  000116  EE20 F009          	lfsr	2,9
+  1247  00011A  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1248  00011C  26D9               	addwf	fsr2l,f,c
+  1249  00011E  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1250  000120  22DA               	addwfc	fsr2h,f,c
+  1251  000122  006F FE27 FFDF     	movff	16265,indf2	;volatile
+  1252  000128                     
+  1253                           ;mcc_generated_files/ecan.c: 268:         tempCanMsg->frame.data4 = RXB0D4;
+  1254  000128  EE20 F00A          	lfsr	2,10
+  1255  00012C  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1256  00012E  26D9               	addwf	fsr2l,f,c
+  1257  000130  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1258  000132  22DA               	addwfc	fsr2h,f,c
+  1259  000134  006F FE2B FFDF     	movff	16266,indf2	;volatile
+  1260  00013A                     
+  1261                           ;mcc_generated_files/ecan.c: 269:         tempCanMsg->frame.data5 = RXB0D5;
+  1262  00013A  EE20 F00B          	lfsr	2,11
+  1263  00013E  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1264  000140  26D9               	addwf	fsr2l,f,c
+  1265  000142  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1266  000144  22DA               	addwfc	fsr2h,f,c
+  1267  000146  006F FE2F FFDF     	movff	16267,indf2	;volatile
+  1268  00014C                     
+  1269                           ;mcc_generated_files/ecan.c: 270:         tempCanMsg->frame.data6 = RXB0D6;
+  1270  00014C  EE20 F00C          	lfsr	2,12
+  1271  000150  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1272  000152  26D9               	addwf	fsr2l,f,c
+  1273  000154  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1274  000156  22DA               	addwfc	fsr2h,f,c
+  1275  000158  006F FE33 FFDF     	movff	16268,indf2	;volatile
+  1276  00015E                     
+  1277                           ;mcc_generated_files/ecan.c: 271:         tempCanMsg->frame.data7 = RXB0D7;
+  1278  00015E  EE20 F00D          	lfsr	2,13
+  1279  000162  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1280  000164  26D9               	addwf	fsr2l,f,c
+  1281  000166  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1282  000168  22DA               	addwfc	fsr2h,f,c
+  1283  00016A  006F FE37 FFDF     	movff	16269,indf2	;volatile
+  1284  000170                     
+  1285                           ;mcc_generated_files/ecan.c: 272:         RXB0CONbits.RXFUL = 0;
+  1286  000170  9E80               	bcf	128,7,c	;volatile
+  1287  000172                     l1574:
+  1288                           
+  1289                           ;mcc_generated_files/ecan.c: 273:         returnValue = 1;
+  1290  000172  0E01               	movlw	1
+  1291  000174  6E18               	movwf	CAN_receive@returnValue^0,c
+  1292                           
+  1293                           ;mcc_generated_files/ecan.c: 274:     }
+  1294  000176  EF69  F001         	goto	l1608
+  1295  00017A                     l308:
+  1296  00017A  0137               	movlb	55	; () banked
+  1297  00017C  AFF0               	btfss	240,7,b	;volatile
+  1298  00017E  EFC3  F000         	goto	u321
+  1299  000182  EFC5  F000         	goto	u320
+  1300  000186                     u321:
+  1301  000186  EF69  F001         	goto	l1608
+  1302  00018A                     u320:
+  1303  00018A                     
+  1304                           ; BSR set to: 55
+  1305                           ;mcc_generated_files/ecan.c: 276:     {;mcc_generated_files/ecan.c: 277:         if ((RX
+      +                          B1SIDL & 0x08) == 0x08)
+  1306  00018A  A7F2               	btfss	242,3,b	;volatile
+  1307  00018C  EFCA  F000         	goto	u331
+  1308  000190  EFCC  F000         	goto	u330
+  1309  000194                     u331:
+  1310  000194  EFF4  F000         	goto	l1582
+  1311  000198                     u330:
+  1312  000198                     
+  1313                           ; BSR set to: 55
+  1314                           ;mcc_generated_files/ecan.c: 278:         {;mcc_generated_files/ecan.c: 280:            
+      +                           tempCanMsg->frame.idType = (uint8_t) 2;
+  1315  000198  0060  F05B  FFD9   	movff	CAN_receive@tempCanMsg,fsr2l
+  1316  00019E  0060  F05F  FFDA   	movff	CAN_receive@tempCanMsg+1,fsr2h
+  1317  0001A4  0E02               	movlw	2
+  1318  0001A6  6EDF               	movwf	indf2,c
+  1319  0001A8                     
+  1320                           ; BSR set to: 55
+  1321                           ;mcc_generated_files/ecan.c: 281:             tempCanMsg->frame.id = convertReg2Extended
+      +                          CANid(RXB1EIDH, RXB1EIDL, RXB1SIDH, RXB1SIDL);
+  1322  0001A8  006D FFD0  F003    	movff	14324,convertReg2ExtendedCANid@tempRXBn_EIDL	;volatile
+  1323  0001AE  006D FFC4  F004    	movff	14321,convertReg2ExtendedCANid@tempRXBn_SIDH	;volatile
+  1324  0001B4  006D FFC8  F005    	movff	14322,convertReg2ExtendedCANid@tempRXBn_SIDL	;volatile
+  1325  0001BA  51F3               	movf	243,w,b	;volatile
+  1326  0001BC  EC6B  F001         	call	_convertReg2ExtendedCANid
+  1327  0001C0  EE20 F001          	lfsr	2,1
+  1328  0001C4  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1329  0001C6  26D9               	addwf	fsr2l,f,c
+  1330  0001C8  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1331  0001CA  22DA               	addwfc	fsr2h,f,c
+  1332  0001CC  0060  F00F  FFDE   	movff	?_convertReg2ExtendedCANid,postinc2
+  1333  0001D2  0060  F013  FFDE   	movff	?_convertReg2ExtendedCANid+1,postinc2
+  1334  0001D8  0060  F017  FFDE   	movff	?_convertReg2ExtendedCANid+2,postinc2
+  1335  0001DE  0060  F01B  FFDE   	movff	?_convertReg2ExtendedCANid+3,postinc2
+  1336                           
+  1337                           ;mcc_generated_files/ecan.c: 282:         }
+  1338  0001E4  EF14  F001         	goto	l1586
+  1339  0001E8                     l1582:
+  1340                           
+  1341                           ; BSR set to: 55
+  1342                           ;mcc_generated_files/ecan.c: 284:         {;mcc_generated_files/ecan.c: 286:            
+      +                           tempCanMsg->frame.idType = (uint8_t) 1;
+  1343  0001E8  0060  F05B  FFD9   	movff	CAN_receive@tempCanMsg,fsr2l
+  1344  0001EE  0060  F05F  FFDA   	movff	CAN_receive@tempCanMsg+1,fsr2h
+  1345  0001F4  0E01               	movlw	1
+  1346  0001F6  6EDF               	movwf	indf2,c
+  1347  0001F8                     
+  1348                           ; BSR set to: 55
+  1349                           ;mcc_generated_files/ecan.c: 287:             tempCanMsg->frame.id = convertReg2Standard
+      +                          CANid(RXB1SIDH, RXB1SIDL);
+  1350  0001F8  006D FFC8  F003    	movff	14322,convertReg2StandardCANid@tempRXBn_SIDL	;volatile
+  1351  0001FE  51F1               	movf	241,w,b	;volatile
+  1352  000200  EC77  F002         	call	_convertReg2StandardCANid
+  1353  000204  EE20 F001          	lfsr	2,1
+  1354  000208  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1355  00020A  26D9               	addwf	fsr2l,f,c
+  1356  00020C  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1357  00020E  22DA               	addwfc	fsr2h,f,c
+  1358  000210  0060  F00F  FFDE   	movff	?_convertReg2StandardCANid,postinc2
+  1359  000216  0060  F013  FFDE   	movff	?_convertReg2StandardCANid+1,postinc2
+  1360  00021C  0060  F017  FFDE   	movff	?_convertReg2StandardCANid+2,postinc2
+  1361  000222  0060  F01B  FFDE   	movff	?_convertReg2StandardCANid+3,postinc2
+  1362  000228                     l1586:
+  1363                           
+  1364                           ;mcc_generated_files/ecan.c: 290:         tempCanMsg->frame.dlc = RXB1DLC;
+  1365  000228  EE20 F005          	lfsr	2,5
+  1366  00022C  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1367  00022E  26D9               	addwf	fsr2l,f,c
+  1368  000230  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1369  000232  22DA               	addwfc	fsr2h,f,c
+  1370  000234  006D FFD7 FFDF     	movff	14325,indf2	;volatile
+  1371  00023A                     
+  1372                           ;mcc_generated_files/ecan.c: 291:         tempCanMsg->frame.data0 = RXB1D0;
+  1373  00023A  EE20 F006          	lfsr	2,6
+  1374  00023E  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1375  000240  26D9               	addwf	fsr2l,f,c
+  1376  000242  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1377  000244  22DA               	addwfc	fsr2h,f,c
+  1378  000246  006D FFDB FFDF     	movff	14326,indf2	;volatile
+  1379  00024C                     
+  1380                           ;mcc_generated_files/ecan.c: 292:         tempCanMsg->frame.data1 = RXB1D1;
+  1381  00024C  EE20 F007          	lfsr	2,7
+  1382  000250  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1383  000252  26D9               	addwf	fsr2l,f,c
+  1384  000254  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1385  000256  22DA               	addwfc	fsr2h,f,c
+  1386  000258  006D FFDF FFDF     	movff	14327,indf2	;volatile
+  1387  00025E                     
+  1388                           ;mcc_generated_files/ecan.c: 293:         tempCanMsg->frame.data2 = RXB1D2;
+  1389  00025E  EE20 F008          	lfsr	2,8
+  1390  000262  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1391  000264  26D9               	addwf	fsr2l,f,c
+  1392  000266  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1393  000268  22DA               	addwfc	fsr2h,f,c
+  1394  00026A  006D FFE3 FFDF     	movff	14328,indf2	;volatile
+  1395  000270                     
+  1396                           ;mcc_generated_files/ecan.c: 294:         tempCanMsg->frame.data3 = RXB1D3;
+  1397  000270  EE20 F009          	lfsr	2,9
+  1398  000274  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1399  000276  26D9               	addwf	fsr2l,f,c
+  1400  000278  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1401  00027A  22DA               	addwfc	fsr2h,f,c
+  1402  00027C  006D FFE7 FFDF     	movff	14329,indf2	;volatile
+  1403  000282                     
+  1404                           ;mcc_generated_files/ecan.c: 295:         tempCanMsg->frame.data4 = RXB1D4;
+  1405  000282  EE20 F00A          	lfsr	2,10
+  1406  000286  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1407  000288  26D9               	addwf	fsr2l,f,c
+  1408  00028A  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1409  00028C  22DA               	addwfc	fsr2h,f,c
+  1410  00028E  006D FFEB FFDF     	movff	14330,indf2	;volatile
+  1411  000294                     
+  1412                           ;mcc_generated_files/ecan.c: 296:         tempCanMsg->frame.data5 = RXB1D5;
+  1413  000294  EE20 F00B          	lfsr	2,11
+  1414  000298  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1415  00029A  26D9               	addwf	fsr2l,f,c
+  1416  00029C  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1417  00029E  22DA               	addwfc	fsr2h,f,c
+  1418  0002A0  006D FFEF FFDF     	movff	14331,indf2	;volatile
+  1419  0002A6                     
+  1420                           ;mcc_generated_files/ecan.c: 297:         tempCanMsg->frame.data6 = RXB1D6;
+  1421  0002A6  EE20 F00C          	lfsr	2,12
+  1422  0002AA  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1423  0002AC  26D9               	addwf	fsr2l,f,c
+  1424  0002AE  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1425  0002B0  22DA               	addwfc	fsr2h,f,c
+  1426  0002B2  006D FFF3 FFDF     	movff	14332,indf2	;volatile
+  1427  0002B8                     
+  1428                           ;mcc_generated_files/ecan.c: 298:         tempCanMsg->frame.data7 = RXB1D7;
+  1429  0002B8  EE20 F00D          	lfsr	2,13
+  1430  0002BC  5016               	movf	CAN_receive@tempCanMsg^0,w,c
+  1431  0002BE  26D9               	addwf	fsr2l,f,c
+  1432  0002C0  5017               	movf	(CAN_receive@tempCanMsg+1)^0,w,c
+  1433  0002C2  22DA               	addwfc	fsr2h,f,c
+  1434  0002C4  006D FFF7 FFDF     	movff	14333,indf2	;volatile
+  1435  0002CA                     
+  1436                           ;mcc_generated_files/ecan.c: 299:         RXB1CONbits.RXFUL = 0;
+  1437  0002CA  0137               	movlb	55	; () banked
+  1438  0002CC  9FF0               	bcf	240,7,b	;volatile
+  1439  0002CE  EFB9  F000         	goto	l1574
+  1440  0002D2                     l1608:
+  1441                           
+  1442                           ;mcc_generated_files/ecan.c: 302:     return (returnValue);
+  1443  0002D2  5018               	movf	CAN_receive@returnValue^0,w,c
+  1444  0002D4  0012               	return		;funcret
+  1445  0002D6                     __end_of_CAN_receive:
+  1446                           	callstack 0
+  1447                           
+  1448 ;; *************** function _convertReg2StandardCANid *****************
+  1449 ;; Defined at:
+  1450 ;;		line 389 in file "mcc_generated_files/ecan.c"
+  1451 ;; Parameters:    Size  Location     Type
+  1452 ;;  tempRXBn_SID    1    wreg     unsigned char 
+  1453 ;;  tempRXBn_SID    1    2[COMRAM] unsigned char 
+  1454 ;; Auto vars:     Size  Location     Type
+  1455 ;;  tempRXBn_SID    1    8[COMRAM] unsigned char 
+  1456 ;;  ConvertedID     4   13[COMRAM] unsigned long 
+  1457 ;;  returnValue     4    9[COMRAM] unsigned long 
+  1458 ;; Return value:  Size  Location     Type
+  1459 ;;                  4    2[COMRAM] unsigned long 
+  1460 ;; Registers used:
+  1461 ;;		wreg, status,2, status,0
+  1462 ;; Tracked objects:
+  1463 ;;		On entry : 0/0
+  1464 ;;		On exit  : 0/0
+  1465 ;;		Unchanged: 0/0
+  1466 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1467 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1468 ;;      Locals:         9       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1469 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1470 ;;      Totals:        15       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1471 ;;Total ram usage:       15 bytes
+  1472 ;; Hardware stack levels used: 1
+  1473 ;; Hardware stack levels required when called: 3
+  1474 ;; This function calls:
+  1475 ;;		Nothing
+  1476 ;; This function is called by:
+  1477 ;;		_CAN_receive
+  1478 ;; This function uses a non-reentrant model
+  1479 ;;
+  1480                           
+  1481                           	psect	text9
+  1482  0004EE                     __ptext9:
+  1483                           	callstack 0
+  1484  0004EE                     _convertReg2StandardCANid:
+  1485                           	callstack 26
+  1486                           
+  1487                           ;incstack = 0
+  1488                           ;convertReg2StandardCANid@tempRXBn_SIDH stored from wreg
+  1489  0004EE  6E09               	movwf	convertReg2StandardCANid@tempRXBn_SIDH^0,c
+  1490  0004F0                     
+  1491                           ;mcc_generated_files/ecan.c: 392:     uint32_t ConvertedID;;mcc_generated_files/ecan.c: 
+      +                          396:     ConvertedID = (uint32_t)(tempRXBn_SIDH << 3);
+  1492  0004F0  5009               	movf	convertReg2StandardCANid@tempRXBn_SIDH^0,w,c
+  1493  0004F2  6E07               	movwf	??_convertReg2StandardCANid^0,c
+  1494  0004F4  6A08               	clrf	(??_convertReg2StandardCANid+1)^0,c
+  1495  0004F6  90D8               	bcf	status,0,c
+  1496  0004F8  3607               	rlcf	??_convertReg2StandardCANid^0,f,c
+  1497  0004FA  3608               	rlcf	(??_convertReg2StandardCANid+1)^0,f,c
+  1498  0004FC  90D8               	bcf	status,0,c
+  1499  0004FE  3607               	rlcf	??_convertReg2StandardCANid^0,f,c
+  1500  000500  3608               	rlcf	(??_convertReg2StandardCANid+1)^0,f,c
+  1501  000502  90D8               	bcf	status,0,c
+  1502  000504  3607               	rlcf	??_convertReg2StandardCANid^0,f,c
+  1503  000506  3608               	rlcf	(??_convertReg2StandardCANid+1)^0,f,c
+  1504  000508  C007  F00E         	movff	??_convertReg2StandardCANid,convertReg2StandardCANid@ConvertedID
+  1505  00050C  C008  F00F         	movff	??_convertReg2StandardCANid+1,convertReg2StandardCANid@ConvertedID+1
+  1506  000510  0E00               	movlw	0
+  1507  000512  BE0F               	btfsc	(convertReg2StandardCANid@ConvertedID+1)^0,7,c
+  1508  000514  0EFF               	movlw	-1
+  1509  000516  6E10               	movwf	(convertReg2StandardCANid@ConvertedID+2)^0,c
+  1510  000518  6E11               	movwf	(convertReg2StandardCANid@ConvertedID+3)^0,c
+  1511  00051A                     
+  1512                           ;mcc_generated_files/ecan.c: 397:     ConvertedID = ConvertedID + (uint32_t)(tempRXBn_SI
+      +                          DL >> 5);
+  1513  00051A  C003  F007         	movff	convertReg2StandardCANid@tempRXBn_SIDL,??_convertReg2StandardCANid
+  1514  00051E  0E05               	movlw	5
+  1515  000520  6E08               	movwf	(??_convertReg2StandardCANid+1)^0,c
+  1516  000522                     u295:
+  1517  000522  90D8               	bcf	status,0,c
+  1518  000524  3207               	rrcf	??_convertReg2StandardCANid^0,f,c
+  1519  000526  2E08               	decfsz	(??_convertReg2StandardCANid+1)^0,f,c
+  1520  000528  EF91  F002         	goto	u295
+  1521  00052C  5007               	movf	??_convertReg2StandardCANid^0,w,c
+  1522  00052E  240E               	addwf	convertReg2StandardCANid@ConvertedID^0,w,c
+  1523  000530  6E0E               	movwf	convertReg2StandardCANid@ConvertedID^0,c
+  1524  000532  0E00               	movlw	0
+  1525  000534  200F               	addwfc	(convertReg2StandardCANid@ConvertedID+1)^0,w,c
+  1526  000536  6E0F               	movwf	(convertReg2StandardCANid@ConvertedID+1)^0,c
+  1527  000538  0E00               	movlw	0
+  1528  00053A  2010               	addwfc	(convertReg2StandardCANid@ConvertedID+2)^0,w,c
+  1529  00053C  6E10               	movwf	(convertReg2StandardCANid@ConvertedID+2)^0,c
+  1530  00053E  0E00               	movlw	0
+  1531  000540  2011               	addwfc	(convertReg2StandardCANid@ConvertedID+3)^0,w,c
+  1532  000542  6E11               	movwf	(convertReg2StandardCANid@ConvertedID+3)^0,c
+  1533  000544                     
+  1534                           ;mcc_generated_files/ecan.c: 398:     returnValue = ConvertedID;
+  1535  000544  C00E  F00A         	movff	convertReg2StandardCANid@ConvertedID,convertReg2StandardCANid@returnValue
+  1536  000548  C00F  F00B         	movff	convertReg2StandardCANid@ConvertedID+1,convertReg2StandardCANid@returnValue+1
+  1537  00054C  C010  F00C         	movff	convertReg2StandardCANid@ConvertedID+2,convertReg2StandardCANid@returnValue+2
+  1538  000550  C011  F00D         	movff	convertReg2StandardCANid@ConvertedID+3,convertReg2StandardCANid@returnValue+3
+  1539  000554                     
+  1540                           ;mcc_generated_files/ecan.c: 399:     return (returnValue);
+  1541  000554  C00A  F003         	movff	convertReg2StandardCANid@returnValue,?_convertReg2StandardCANid
+  1542  000558  C00B  F004         	movff	convertReg2StandardCANid@returnValue+1,?_convertReg2StandardCANid+1
+  1543  00055C  C00C  F005         	movff	convertReg2StandardCANid@returnValue+2,?_convertReg2StandardCANid+2
+  1544  000560  C00D  F006         	movff	convertReg2StandardCANid@returnValue+3,?_convertReg2StandardCANid+3
+  1545  000564  0012               	return		;funcret
+  1546  000566                     __end_of_convertReg2StandardCANid:
+  1547                           	callstack 0
+  1548                           
+  1549 ;; *************** function _convertReg2ExtendedCANid *****************
+  1550 ;; Defined at:
+  1551 ;;		line 368 in file "mcc_generated_files/ecan.c"
+  1552 ;; Parameters:    Size  Location     Type
+  1553 ;;  tempRXBn_EID    1    wreg     unsigned char 
+  1554 ;;  tempRXBn_EID    1    2[COMRAM] unsigned char 
+  1555 ;;  tempRXBn_SID    1    3[COMRAM] unsigned char 
+  1556 ;;  tempRXBn_SID    1    4[COMRAM] unsigned char 
+  1557 ;; Auto vars:     Size  Location     Type
+  1558 ;;  tempRXBn_EID    1   10[COMRAM] unsigned char 
+  1559 ;;  ConvertedID     4   17[COMRAM] unsigned long 
+  1560 ;;  returnValue     4   11[COMRAM] unsigned long 
+  1561 ;;  CAN_standard    1   16[COMRAM] unsigned char 
+  1562 ;;  CAN_standard    1   15[COMRAM] unsigned char 
+  1563 ;; Return value:  Size  Location     Type
+  1564 ;;                  4    2[COMRAM] unsigned long 
+  1565 ;; Registers used:
+  1566 ;;		wreg, status,2, status,0
+  1567 ;; Tracked objects:
+  1568 ;;		On entry : 0/0
+  1569 ;;		On exit  : 0/0
+  1570 ;;		Unchanged: 0/0
+  1571 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1572 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1573 ;;      Locals:        11       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1574 ;;      Temps:          4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1575 ;;      Totals:        19       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1576 ;;Total ram usage:       19 bytes
+  1577 ;; Hardware stack levels used: 1
+  1578 ;; Hardware stack levels required when called: 3
+  1579 ;; This function calls:
+  1580 ;;		Nothing
+  1581 ;; This function is called by:
+  1582 ;;		_CAN_receive
+  1583 ;; This function uses a non-reentrant model
+  1584 ;;
+  1585                           
+  1586                           	psect	text10
+  1587  0002D6                     __ptext10:
+  1588                           	callstack 0
+  1589  0002D6                     _convertReg2ExtendedCANid:
+  1590                           	callstack 26
+  1591                           
+  1592                           ;incstack = 0
+  1593                           ;convertReg2ExtendedCANid@tempRXBn_EIDH stored from wreg
+  1594  0002D6  6E0B               	movwf	convertReg2ExtendedCANid@tempRXBn_EIDH^0,c
+  1595  0002D8                     
+  1596                           ;mcc_generated_files/ecan.c: 371:     uint32_t ConvertedID = 0;
+  1597  0002D8  0E00               	movlw	0
+  1598  0002DA  6E12               	movwf	convertReg2ExtendedCANid@ConvertedID^0,c
+  1599  0002DC  0E00               	movlw	0
+  1600  0002DE  6E13               	movwf	(convertReg2ExtendedCANid@ConvertedID+1)^0,c
+  1601  0002E0  0E00               	movlw	0
+  1602  0002E2  6E14               	movwf	(convertReg2ExtendedCANid@ConvertedID+2)^0,c
+  1603  0002E4  0E00               	movlw	0
+  1604  0002E6  6E15               	movwf	(convertReg2ExtendedCANid@ConvertedID+3)^0,c
+  1605  0002E8                     
+  1606                           ;mcc_generated_files/ecan.c: 372:     uint8_t CAN_standardLo_ID_lo2bits;;mcc_generated_f
+      +                          iles/ecan.c: 373:     uint8_t CAN_standardLo_ID_hi3bits;;mcc_generated_files/ecan.c: 375
+      +                          :     CAN_standardLo_ID_lo2bits = (uint8_t)(tempRXBn_SIDL & 0x03);
+  1607  0002E8  5005               	movf	convertReg2ExtendedCANid@tempRXBn_SIDL^0,w,c
+  1608  0002EA  0B03               	andlw	3
+  1609  0002EC  6E10               	movwf	convertReg2ExtendedCANid@CAN_standardLo_ID_lo2bits^0,c
+  1610  0002EE                     
+  1611                           ;mcc_generated_files/ecan.c: 376:     CAN_standardLo_ID_hi3bits = (uint8_t)(tempRXBn_SID
+      +                          L >> 5);
+  1612  0002EE  3805               	swapf	convertReg2ExtendedCANid@tempRXBn_SIDL^0,w,c
+  1613  0002F0  42E8               	rrncf	wreg,f,c
+  1614  0002F2  0B07               	andlw	7
+  1615  0002F4  6E11               	movwf	convertReg2ExtendedCANid@CAN_standardLo_ID_hi3bits^0,c
+  1616  0002F6                     
+  1617                           ;mcc_generated_files/ecan.c: 377:     ConvertedID = (uint32_t)(tempRXBn_SIDH << 3);
+  1618  0002F6  5004               	movf	convertReg2ExtendedCANid@tempRXBn_SIDH^0,w,c
+  1619  0002F8  6E07               	movwf	??_convertReg2ExtendedCANid^0,c
+  1620  0002FA  6A08               	clrf	(??_convertReg2ExtendedCANid+1)^0,c
+  1621  0002FC  90D8               	bcf	status,0,c
+  1622  0002FE  3607               	rlcf	??_convertReg2ExtendedCANid^0,f,c
+  1623  000300  3608               	rlcf	(??_convertReg2ExtendedCANid+1)^0,f,c
+  1624  000302  90D8               	bcf	status,0,c
+  1625  000304  3607               	rlcf	??_convertReg2ExtendedCANid^0,f,c
+  1626  000306  3608               	rlcf	(??_convertReg2ExtendedCANid+1)^0,f,c
+  1627  000308  90D8               	bcf	status,0,c
+  1628  00030A  3607               	rlcf	??_convertReg2ExtendedCANid^0,f,c
+  1629  00030C  3608               	rlcf	(??_convertReg2ExtendedCANid+1)^0,f,c
+  1630  00030E  C007  F012         	movff	??_convertReg2ExtendedCANid,convertReg2ExtendedCANid@ConvertedID
+  1631  000312  C008  F013         	movff	??_convertReg2ExtendedCANid+1,convertReg2ExtendedCANid@ConvertedID+1
+  1632  000316  0E00               	movlw	0
+  1633  000318  BE13               	btfsc	(convertReg2ExtendedCANid@ConvertedID+1)^0,7,c
+  1634  00031A  0EFF               	movlw	-1
+  1635  00031C  6E14               	movwf	(convertReg2ExtendedCANid@ConvertedID+2)^0,c
+  1636  00031E  6E15               	movwf	(convertReg2ExtendedCANid@ConvertedID+3)^0,c
+  1637  000320                     
+  1638                           ;mcc_generated_files/ecan.c: 378:     ConvertedID = ConvertedID + CAN_standardLo_ID_hi3b
+      +                          its;
+  1639  000320  5011               	movf	convertReg2ExtendedCANid@CAN_standardLo_ID_hi3bits^0,w,c
+  1640  000322  2412               	addwf	convertReg2ExtendedCANid@ConvertedID^0,w,c
+  1641  000324  6E12               	movwf	convertReg2ExtendedCANid@ConvertedID^0,c
+  1642  000326  0E00               	movlw	0
+  1643  000328  2013               	addwfc	(convertReg2ExtendedCANid@ConvertedID+1)^0,w,c
+  1644  00032A  6E13               	movwf	(convertReg2ExtendedCANid@ConvertedID+1)^0,c
+  1645  00032C  0E00               	movlw	0
+  1646  00032E  2014               	addwfc	(convertReg2ExtendedCANid@ConvertedID+2)^0,w,c
+  1647  000330  6E14               	movwf	(convertReg2ExtendedCANid@ConvertedID+2)^0,c
+  1648  000332  0E00               	movlw	0
+  1649  000334  2015               	addwfc	(convertReg2ExtendedCANid@ConvertedID+3)^0,w,c
+  1650  000336  6E15               	movwf	(convertReg2ExtendedCANid@ConvertedID+3)^0,c
+  1651  000338                     
+  1652                           ;mcc_generated_files/ecan.c: 379:     ConvertedID = (ConvertedID << 2);
+  1653  000338  C012  F007         	movff	convertReg2ExtendedCANid@ConvertedID,??_convertReg2ExtendedCANid
+  1654  00033C  C013  F008         	movff	convertReg2ExtendedCANid@ConvertedID+1,??_convertReg2ExtendedCANid+1
+  1655  000340  C014  F009         	movff	convertReg2ExtendedCANid@ConvertedID+2,??_convertReg2ExtendedCANid+2
+  1656  000344  C015  F00A         	movff	convertReg2ExtendedCANid@ConvertedID+3,??_convertReg2ExtendedCANid+3
+  1657  000348  0E02               	movlw	2
+  1658  00034A                     u285:
+  1659  00034A  90D8               	bcf	status,0,c
+  1660  00034C  3607               	rlcf	??_convertReg2ExtendedCANid^0,f,c
+  1661  00034E  3608               	rlcf	(??_convertReg2ExtendedCANid+1)^0,f,c
+  1662  000350  3609               	rlcf	(??_convertReg2ExtendedCANid+2)^0,f,c
+  1663  000352  360A               	rlcf	(??_convertReg2ExtendedCANid+3)^0,f,c
+  1664  000354  2EE8               	decfsz	wreg,f,c
+  1665  000356  EFA5  F001         	goto	u285
+  1666  00035A  C007  F012         	movff	??_convertReg2ExtendedCANid,convertReg2ExtendedCANid@ConvertedID
+  1667  00035E  C008  F013         	movff	??_convertReg2ExtendedCANid+1,convertReg2ExtendedCANid@ConvertedID+1
+  1668  000362  C009  F014         	movff	??_convertReg2ExtendedCANid+2,convertReg2ExtendedCANid@ConvertedID+2
+  1669  000366  C00A  F015         	movff	??_convertReg2ExtendedCANid+3,convertReg2ExtendedCANid@ConvertedID+3
+  1670  00036A                     
+  1671                           ;mcc_generated_files/ecan.c: 380:     ConvertedID = ConvertedID + CAN_standardLo_ID_lo2b
+      +                          its;
+  1672  00036A  5010               	movf	convertReg2ExtendedCANid@CAN_standardLo_ID_lo2bits^0,w,c
+  1673  00036C  2412               	addwf	convertReg2ExtendedCANid@ConvertedID^0,w,c
+  1674  00036E  6E12               	movwf	convertReg2ExtendedCANid@ConvertedID^0,c
+  1675  000370  0E00               	movlw	0
+  1676  000372  2013               	addwfc	(convertReg2ExtendedCANid@ConvertedID+1)^0,w,c
+  1677  000374  6E13               	movwf	(convertReg2ExtendedCANid@ConvertedID+1)^0,c
+  1678  000376  0E00               	movlw	0
+  1679  000378  2014               	addwfc	(convertReg2ExtendedCANid@ConvertedID+2)^0,w,c
+  1680  00037A  6E14               	movwf	(convertReg2ExtendedCANid@ConvertedID+2)^0,c
+  1681  00037C  0E00               	movlw	0
+  1682  00037E  2015               	addwfc	(convertReg2ExtendedCANid@ConvertedID+3)^0,w,c
+  1683  000380  6E15               	movwf	(convertReg2ExtendedCANid@ConvertedID+3)^0,c
+  1684                           
+  1685                           ;mcc_generated_files/ecan.c: 381:     ConvertedID = (ConvertedID << 8);
+  1686  000382  C012  F008         	movff	convertReg2ExtendedCANid@ConvertedID,??_convertReg2ExtendedCANid+1
+  1687  000386  C013  F009         	movff	convertReg2ExtendedCANid@ConvertedID+1,??_convertReg2ExtendedCANid+2
+  1688  00038A  C014  F00A         	movff	convertReg2ExtendedCANid@ConvertedID+2,??_convertReg2ExtendedCANid+3
+  1689  00038E  6A07               	clrf	??_convertReg2ExtendedCANid^0,c
+  1690  000390  C007  F012         	movff	??_convertReg2ExtendedCANid,convertReg2ExtendedCANid@ConvertedID
+  1691  000394  C008  F013         	movff	??_convertReg2ExtendedCANid+1,convertReg2ExtendedCANid@ConvertedID+1
+  1692  000398  C009  F014         	movff	??_convertReg2ExtendedCANid+2,convertReg2ExtendedCANid@ConvertedID+2
+  1693  00039C  C00A  F015         	movff	??_convertReg2ExtendedCANid+3,convertReg2ExtendedCANid@ConvertedID+3
+  1694  0003A0                     
+  1695                           ;mcc_generated_files/ecan.c: 382:     ConvertedID = ConvertedID + tempRXBn_EIDH;
+  1696  0003A0  500B               	movf	convertReg2ExtendedCANid@tempRXBn_EIDH^0,w,c
+  1697  0003A2  2412               	addwf	convertReg2ExtendedCANid@ConvertedID^0,w,c
+  1698  0003A4  6E12               	movwf	convertReg2ExtendedCANid@ConvertedID^0,c
+  1699  0003A6  0E00               	movlw	0
+  1700  0003A8  2013               	addwfc	(convertReg2ExtendedCANid@ConvertedID+1)^0,w,c
+  1701  0003AA  6E13               	movwf	(convertReg2ExtendedCANid@ConvertedID+1)^0,c
+  1702  0003AC  0E00               	movlw	0
+  1703  0003AE  2014               	addwfc	(convertReg2ExtendedCANid@ConvertedID+2)^0,w,c
+  1704  0003B0  6E14               	movwf	(convertReg2ExtendedCANid@ConvertedID+2)^0,c
+  1705  0003B2  0E00               	movlw	0
+  1706  0003B4  2015               	addwfc	(convertReg2ExtendedCANid@ConvertedID+3)^0,w,c
+  1707  0003B6  6E15               	movwf	(convertReg2ExtendedCANid@ConvertedID+3)^0,c
+  1708  0003B8                     
+  1709                           ;mcc_generated_files/ecan.c: 383:     ConvertedID = (ConvertedID << 8);
+  1710  0003B8  C012  F008         	movff	convertReg2ExtendedCANid@ConvertedID,??_convertReg2ExtendedCANid+1
+  1711  0003BC  C013  F009         	movff	convertReg2ExtendedCANid@ConvertedID+1,??_convertReg2ExtendedCANid+2
+  1712  0003C0  C014  F00A         	movff	convertReg2ExtendedCANid@ConvertedID+2,??_convertReg2ExtendedCANid+3
+  1713  0003C4  6A07               	clrf	??_convertReg2ExtendedCANid^0,c
+  1714  0003C6  C007  F012         	movff	??_convertReg2ExtendedCANid,convertReg2ExtendedCANid@ConvertedID
+  1715  0003CA  C008  F013         	movff	??_convertReg2ExtendedCANid+1,convertReg2ExtendedCANid@ConvertedID+1
+  1716  0003CE  C009  F014         	movff	??_convertReg2ExtendedCANid+2,convertReg2ExtendedCANid@ConvertedID+2
+  1717  0003D2  C00A  F015         	movff	??_convertReg2ExtendedCANid+3,convertReg2ExtendedCANid@ConvertedID+3
+  1718                           
+  1719                           ;mcc_generated_files/ecan.c: 384:     ConvertedID = ConvertedID + tempRXBn_EIDL;
+  1720  0003D6  5003               	movf	convertReg2ExtendedCANid@tempRXBn_EIDL^0,w,c
+  1721  0003D8  2412               	addwf	convertReg2ExtendedCANid@ConvertedID^0,w,c
+  1722  0003DA  6E12               	movwf	convertReg2ExtendedCANid@ConvertedID^0,c
+  1723  0003DC  0E00               	movlw	0
+  1724  0003DE  2013               	addwfc	(convertReg2ExtendedCANid@ConvertedID+1)^0,w,c
+  1725  0003E0  6E13               	movwf	(convertReg2ExtendedCANid@ConvertedID+1)^0,c
+  1726  0003E2  0E00               	movlw	0
+  1727  0003E4  2014               	addwfc	(convertReg2ExtendedCANid@ConvertedID+2)^0,w,c
+  1728  0003E6  6E14               	movwf	(convertReg2ExtendedCANid@ConvertedID+2)^0,c
+  1729  0003E8  0E00               	movlw	0
+  1730  0003EA  2015               	addwfc	(convertReg2ExtendedCANid@ConvertedID+3)^0,w,c
+  1731  0003EC  6E15               	movwf	(convertReg2ExtendedCANid@ConvertedID+3)^0,c
+  1732  0003EE                     
+  1733                           ;mcc_generated_files/ecan.c: 385:     returnValue = ConvertedID;
+  1734  0003EE  C012  F00C         	movff	convertReg2ExtendedCANid@ConvertedID,convertReg2ExtendedCANid@returnValue
+  1735  0003F2  C013  F00D         	movff	convertReg2ExtendedCANid@ConvertedID+1,convertReg2ExtendedCANid@returnValue+1
+  1736  0003F6  C014  F00E         	movff	convertReg2ExtendedCANid@ConvertedID+2,convertReg2ExtendedCANid@returnValue+2
+  1737  0003FA  C015  F00F         	movff	convertReg2ExtendedCANid@ConvertedID+3,convertReg2ExtendedCANid@returnValue+3
+  1738  0003FE                     
+  1739                           ;mcc_generated_files/ecan.c: 386:     return (returnValue);
+  1740  0003FE  C00C  F003         	movff	convertReg2ExtendedCANid@returnValue,?_convertReg2ExtendedCANid
+  1741  000402  C00D  F004         	movff	convertReg2ExtendedCANid@returnValue+1,?_convertReg2ExtendedCANid+1
+  1742  000406  C00E  F005         	movff	convertReg2ExtendedCANid@returnValue+2,?_convertReg2ExtendedCANid+2
+  1743  00040A  C00F  F006         	movff	convertReg2ExtendedCANid@returnValue+3,?_convertReg2ExtendedCANid+3
+  1744  00040E  0012               	return		;funcret
+  1745  000410                     __end_of_convertReg2ExtendedCANid:
+  1746                           	callstack 0
+  1747                           
+  1748 ;; *************** function _INTERRUPT_InterruptManager *****************
+  1749 ;; Defined at:
+  1750 ;;		line 58 in file "mcc_generated_files/interrupt_manager.c"
+  1751 ;; Parameters:    Size  Location     Type
+  1752 ;;		None
+  1753 ;; Auto vars:     Size  Location     Type
+  1754 ;;		None
+  1755 ;; Return value:  Size  Location     Type
+  1756 ;;                  1    wreg      void 
+  1757 ;; Registers used:
+  1758 ;;		wreg, pcl, pclath, pclatu, tosl, cstack
+  1759 ;; Tracked objects:
+  1760 ;;		On entry : 0/0
+  1761 ;;		On exit  : 0/0
+  1762 ;;		Unchanged: 0/0
+  1763 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1764 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1765 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1766 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1767 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1768 ;;Total ram usage:        2 bytes
+  1769 ;; Hardware stack levels used: 1
+  1770 ;; Hardware stack levels required when called: 2
+  1771 ;; This function calls:
+  1772 ;;		_ECAN_WAKI_ISR
+  1773 ;; This function is called by:
+  1774 ;;		Interrupt level 2
+  1775 ;; This function uses a non-reentrant model
+  1776 ;;
+  1777                           
+  1778                           	psect	text11
+  1779  000624                     __ptext11:
+  1780                           	callstack 0
+  1781  000624                     _INTERRUPT_InterruptManager:
+  1782                           	callstack 25
+  1783                           
+  1784                           ;incstack = 0
+  1785  000624  006F FFE8  F001    	movff	pclath,??_INTERRUPT_InterruptManager
+  1786  00062A  006F FFEC  F002    	movff	pclatu,??_INTERRUPT_InterruptManager+1
+  1787  000630                     
+  1788                           ;mcc_generated_files/interrupt_manager.c: 61:     if(PIE5bits.WAKIE == 1 && PIR5bits.WAK
+      +                          IF == 1)
+  1789  000630  0139               	movlb	57	; () banked
+  1790  000632  AD95               	btfss	149,6,b	;volatile
+  1791  000634  EF1E  F003         	goto	i2u22_41
+  1792  000638  EF20  F003         	goto	i2u22_40
+  1793  00063C                     i2u22_41:
+  1794  00063C  EF29  F003         	goto	i2l423
+  1795  000640                     i2u22_40:
+  1796  000640                     
+  1797                           ; BSR set to: 57
+  1798  000640  ADA5               	btfss	165,6,b	;volatile
+  1799  000642  EF25  F003         	goto	i2u23_41
+  1800  000646  EF27  F003         	goto	i2u23_40
+  1801  00064A                     i2u23_41:
+  1802  00064A  EF29  F003         	goto	i2l423
+  1803  00064E                     i2u23_40:
+  1804  00064E                     
+  1805                           ; BSR set to: 57
+  1806                           ;mcc_generated_files/interrupt_manager.c: 62:     {;mcc_generated_files/interrupt_manage
+      +                          r.c: 63:         ECAN_WAKI_ISR();
+  1807  00064E  EC42  F003         	call	_ECAN_WAKI_ISR	;wreg free
+  1808  000652                     i2l423:
+  1809  000652  0060  F00B  FFFB   	movff	??_INTERRUPT_InterruptManager+1,pclatu
+  1810  000658  0060  F007  FFFA   	movff	??_INTERRUPT_InterruptManager,pclath
+  1811  00065E  0011               	retfie		f
+  1812  000660                     __end_of_INTERRUPT_InterruptManager:
+  1813                           	callstack 0
+  1814                           
+  1815 ;; *************** function _ECAN_WAKI_ISR *****************
+  1816 ;; Defined at:
+  1817 ;;		line 444 in file "mcc_generated_files/ecan.c"
+  1818 ;; Parameters:    Size  Location     Type
+  1819 ;;		None
+  1820 ;; Auto vars:     Size  Location     Type
+  1821 ;;		None
+  1822 ;; Return value:  Size  Location     Type
+  1823 ;;                  1    wreg      void 
+  1824 ;; Registers used:
+  1825 ;;		wreg, pcl, pclath, pclatu, tosl, cstack
+  1826 ;; Tracked objects:
+  1827 ;;		On entry : 0/0
+  1828 ;;		On exit  : 0/0
+  1829 ;;		Unchanged: 0/0
+  1830 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1831 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1832 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1833 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1834 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1835 ;;Total ram usage:        0 bytes
+  1836 ;; Hardware stack levels used: 1
+  1837 ;; Hardware stack levels required when called: 1
+  1838 ;; This function calls:
+  1839 ;;		Absolute function
+  1840 ;;		_WakeUpDefaultInterruptHandler
+  1841 ;; This function is called by:
+  1842 ;;		_INTERRUPT_InterruptManager
+  1843 ;; This function uses a non-reentrant model
+  1844 ;;
+  1845                           
+  1846                           	psect	text12
+  1847  000684                     __ptext12:
+  1848                           	callstack 0
+  1849  000684                     _ECAN_WAKI_ISR:
+  1850                           	callstack 25
+  1851  000684                     
+  1852                           ;mcc_generated_files/ecan.c: 446:     WakeUpInterruptHandler();
+  1853  000684  D802               	call	i2u9_48
+  1854  000686  EF4F  F003         	goto	i2u9_49
+  1855  00068A                     i2u9_48:
+  1856  00068A  0005               	push	
+  1857  00068C  6EFA               	movwf	pclath,c
+  1858  00068E  502C               	movf	_WakeUpInterruptHandler^0,w,c
+  1859  000690  6EFD               	movwf	tosl,c
+  1860  000692  502D               	movf	(_WakeUpInterruptHandler+1)^0,w,c
+  1861  000694  6EFE               	movwf	tosh,c
+  1862  000696  50F8               	movf	tblptru,w,c
+  1863  000698  6EFF               	movwf	tosu,c
+  1864  00069A  50FA               	movf	pclath,w,c
+  1865  00069C  0012               	return		;indir
+  1866  00069E                     i2u9_49:
+  1867  00069E                     
+  1868                           ;mcc_generated_files/ecan.c: 447:     PIR5bits.WAKIF = 0;
+  1869  00069E  0139               	movlb	57	; () banked
+  1870  0006A0  9DA5               	bcf	165,6,b	;volatile
+  1871  0006A2                     
+  1872                           ; BSR set to: 57
+  1873  0006A2  0012               	return		;funcret
+  1874  0006A4                     __end_of_ECAN_WAKI_ISR:
+  1875                           	callstack 0
+  1876                           
+  1877 ;; *************** function _WakeUpDefaultInterruptHandler *****************
+  1878 ;; Defined at:
+  1879 ;;		line 63 in file "mcc_generated_files/ecan.c"
+  1880 ;; Parameters:    Size  Location     Type
+  1881 ;;		None
+  1882 ;; Auto vars:     Size  Location     Type
+  1883 ;;		None
+  1884 ;; Return value:  Size  Location     Type
+  1885 ;;                  1    wreg      void 
+  1886 ;; Registers used:
+  1887 ;;		None
+  1888 ;; Tracked objects:
+  1889 ;;		On entry : 0/0
+  1890 ;;		On exit  : 0/0
+  1891 ;;		Unchanged: 0/0
+  1892 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1893 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1894 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1895 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1896 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1897 ;;Total ram usage:        0 bytes
+  1898 ;; Hardware stack levels used: 1
+  1899 ;; This function calls:
+  1900 ;;		Nothing
+  1901 ;; This function is called by:
+  1902 ;;		_ECAN_Initialize
+  1903 ;;		_ECAN_WAKI_ISR
+  1904 ;; This function uses a non-reentrant model
+  1905 ;;
+  1906                           
+  1907                           	psect	text13
+  1908  0006FA                     __ptext13:
+  1909                           	callstack 0
+  1910  0006FA                     _WakeUpDefaultInterruptHandler:
+  1911                           	callstack 25
+  1912  0006FA  0012               	return		;funcret
+  1913  0006FC                     __end_of_WakeUpDefaultInterruptHandler:
+  1914                           	callstack 0
+  1915                           
+  1916                           ;
+  1917                           ; Interrupt Vector Table @ 0x8
+  1918                           ;
+  1919                           
+  1920                           	psect	ivt0x8
+  1921  000008                     __pivt0x8:
+  1922                           	callstack 0
+  1923  000008                     ivt0x8_base:
+  1924                           	callstack 0
+  1925                           
+  1926                           ; high-priority vector
+  1927  000008  EF12  F003         	goto	_INTERRUPT_InterruptManager
+  1928  000018                     	org	16
+  1929                           
+  1930                           ; low-priority vector
+  1931  000018  00FF               	reset	
+  1932  0000                     
+  1933                           	psect	text14
+  1934  000000                     __ptext14:
+  1935                           	callstack 0
+  1936  000000                     
+  1937                           	psect	rparam
+  1938  0000                     
+  1939                           	psect	idloc
+  1940                           
+  1941                           ;Config register IDLOC0 @ 0x200000
+  1942                           ;	unspecified, using default values
+  1943  200000                     	org	2097152
+  1944  200000  0FFF               	dw	4095
+  1945                           
+  1946                           ;Config register IDLOC1 @ 0x200002
+  1947                           ;	unspecified, using default values
+  1948  200002                     	org	2097154
+  1949  200002  0FFF               	dw	4095
+  1950                           
+  1951                           ;Config register IDLOC2 @ 0x200004
+  1952                           ;	unspecified, using default values
+  1953  200004                     	org	2097156
+  1954  200004  0FFF               	dw	4095
+  1955                           
+  1956                           ;Config register IDLOC3 @ 0x200006
+  1957                           ;	unspecified, using default values
+  1958  200006                     	org	2097158
+  1959  200006  0FFF               	dw	4095
+  1960                           
+  1961                           ;Config register IDLOC4 @ 0x200008
+  1962                           ;	unspecified, using default values
+  1963  200008                     	org	2097160
+  1964  200008  0FFF               	dw	4095
+  1965                           
+  1966                           ;Config register IDLOC5 @ 0x20000A
+  1967                           ;	unspecified, using default values
+  1968  20000A                     	org	2097162
+  1969  20000A  0FFF               	dw	4095
+  1970                           
+  1971                           ;Config register IDLOC6 @ 0x20000C
+  1972                           ;	unspecified, using default values
+  1973  20000C                     	org	2097164
+  1974  20000C  0FFF               	dw	4095
+  1975                           
+  1976                           ;Config register IDLOC7 @ 0x20000E
+  1977                           ;	unspecified, using default values
+  1978  20000E                     	org	2097166
+  1979  20000E  0FFF               	dw	4095
+  1980                           
+  1981                           	psect	config
+  1982                           
+  1983                           ;Config register CONFIG1L @ 0x300000
+  1984                           ;	External Oscillator Selection
+  1985                           ;	FEXTOSC = OFF, Oscillator not enabled
+  1986                           ;	Reset Oscillator Selection
+  1987                           ;	RSTOSC = EXTOSC, EXTOSC operating per FEXTOSC bits (device manufacturing default)
+  1988  300000                     	org	3145728
+  1989  300000  FC                 	db	252
+  1990                           
+  1991                           ;Config register CONFIG1H @ 0x300001
+  1992                           ;	Clock out Enable bit
+  1993                           ;	CLKOUTEN = OFF, CLKOUT function is disabled
+  1994                           ;	PRLOCKED One-Way Set Enable bit
+  1995                           ;	PR1WAY = ON, PRLOCK bit can be cleared and set only once
+  1996                           ;	Clock Switch Enable bit
+  1997                           ;	CSWEN = ON, Writing to NOSC and NDIV is allowed
+  1998                           ;	Fail-Safe Clock Monitor Enable bit
+  1999                           ;	FCMEN = ON, Fail-Safe Clock Monitor enabled
+  2000  300001                     	org	3145729
+  2001  300001  FF                 	db	255
+  2002                           
+  2003                           ;Config register CONFIG2L @ 0x300002
+  2004                           ;	MCLR Enable bit
+  2005                           ;	MCLRE = EXTMCLR, If LVP = 0, MCLR pin is MCLR; If LVP = 1, RE3 pin function is MCLR
+  2006                           ;	Power-up timer selection bits
+  2007                           ;	PWRTS = PWRT_OFF, PWRT is disabled
+  2008                           ;	Multi-vector enable bit
+  2009                           ;	MVECEN = OFF, Interrupt contoller does not use vector table to prioritze interrupts
+  2010                           ;	IVTLOCK bit One-way set enable bit
+  2011                           ;	IVT1WAY = ON, IVTLOCK bit can be cleared and set only once
+  2012                           ;	Low Power BOR Enable bit
+  2013                           ;	LPBOREN = OFF, ULPBOR disabled
+  2014                           ;	Brown-out Reset Enable bits
+  2015                           ;	BOREN = SBORDIS, Brown-out Reset enabled , SBOREN bit is ignored
+  2016  300002                     	org	3145730
+  2017  300002  F7                 	db	247
+  2018                           
+  2019                           ;Config register CONFIG2H @ 0x300003
+  2020                           ;	Brown-out Reset Voltage Selection bits
+  2021                           ;	BORV = VBOR_2P45, Brown-out Reset Voltage (VBOR) set to 2.45V
+  2022                           ;	ZCD Disable bit
+  2023                           ;	ZCD = OFF, ZCD disabled. ZCD can be enabled by setting the ZCDSEN bit of ZCDCON
+  2024                           ;	PPSLOCK bit One-Way Set Enable bit
+  2025                           ;	PPS1WAY = ON, PPSLOCK bit can be cleared and set only once; PPS registers remain locke
+      +                          d after one clear/set cycle
+  2026                           ;	Stack Full/Underflow Reset Enable bit
+  2027                           ;	STVREN = ON, Stack full/underflow will cause Reset
+  2028                           ;	Debugger Enable bit
+  2029                           ;	DEBUG = OFF, Background debugger disabled
+  2030                           ;	Extended Instruction Set Enable bit
+  2031                           ;	XINST = OFF, Extended Instruction Set and Indexed Addressing Mode disabled
+  2032  300003                     	org	3145731
+  2033  300003  FF                 	db	255
+  2034                           
+  2035                           ;Config register CONFIG3L @ 0x300004
+  2036                           ;	WDT Period selection bits
+  2037                           ;	WDTCPS = WDTCPS_31, Divider ratio 1:65536; software control of WDTPS
+  2038                           ;	WDT operating mode
+  2039                           ;	WDTE = OFF, WDT Disabled; SWDTEN is ignored
+  2040  300004                     	org	3145732
+  2041  300004  9F                 	db	159
+  2042                           
+  2043                           ;Config register CONFIG3H @ 0x300005
+  2044                           ;	WDT Window Select bits
+  2045                           ;	WDTCWS = WDTCWS_7, window always open (100%); software control; keyed access not requi
+      +                          red
+  2046                           ;	WDT input clock selector
+  2047                           ;	WDTCCS = SC, Software Control
+  2048  300005                     	org	3145733
+  2049  300005  FF                 	db	255
+  2050                           
+  2051                           ;Config register CONFIG4L @ 0x300006
+  2052                           ;	Boot Block Size selection bits
+  2053                           ;	BBSIZE = BBSIZE_512, Boot Block size is 512 words
+  2054                           ;	Boot Block enable bit
+  2055                           ;	BBEN = OFF, Boot block disabled
+  2056                           ;	Storage Area Flash enable bit
+  2057                           ;	SAFEN = OFF, SAF disabled
+  2058                           ;	Application Block write protection bit
+  2059                           ;	WRTAPP = OFF, Application Block not write protected
+  2060  300006                     	org	3145734
+  2061  300006  FF                 	db	255
+  2062                           
+  2063                           ;Config register CONFIG4H @ 0x300007
+  2064                           ;	Configuration Register Write Protection bit
+  2065                           ;	WRTB = OFF, Configuration registers (300000-30000Bh) not write-protected
+  2066                           ;	Boot Block Write Protection bit
+  2067                           ;	WRTC = OFF, Boot Block (000000-0007FFh) not write-protected
+  2068                           ;	Data EEPROM Write Protection bit
+  2069                           ;	WRTD = OFF, Data EEPROM not write-protected
+  2070                           ;	SAF Write protection bit
+  2071                           ;	WRTSAF = OFF, SAF not Write Protected
+  2072                           ;	Low Voltage Programming Enable bit
+  2073                           ;	LVP = ON, Low voltage programming enabled. MCLR/VPP pin function is MCLR. MCLRE config
+      +                          uration bit is ignored
+  2074  300007                     	org	3145735
+  2075  300007  FF                 	db	255
+  2076                           
+  2077                           ;Config register CONFIG5L @ 0x300008
+  2078                           ;	PFM and Data EEPROM Code Protection bit
+  2079                           ;	CP = OFF, PFM and Data EEPROM code protection disabled
+  2080  300008                     	org	3145736
+  2081  300008  FF                 	db	255
+  2082                           
+  2083                           ;Config register CONFIG5H @ 0x300009
+  2084                           ;	unspecified, using default values
+  2085  300009                     	org	3145737
+  2086  300009  FF                 	db	255
+  2087                           tosu	equ	0x3FFF
+  2088                           tosh	equ	0x3FFE
+  2089                           tosl	equ	0x3FFD
+  2090                           stkptr	equ	0x3FFC
+  2091                           pclatu	equ	0x3FFB
+  2092                           pclath	equ	0x3FFA
+  2093                           pcl	equ	0x3FF9
+  2094                           tblptru	equ	0x3FF8
+  2095                           tblptrh	equ	0x3FF7
+  2096                           tblptrl	equ	0x3FF6
+  2097                           tablat	equ	0x3FF5
+  2098                           prodh	equ	0x3FF4
+  2099                           prodl	equ	0x3FF3
+  2100                           indf0	equ	0x3FEF
+  2101                           postinc0	equ	0x3FEE
+  2102                           postdec0	equ	0x3FED
+  2103                           preinc0	equ	0x3FEC
+  2104                           plusw0	equ	0x3FEB
+  2105                           fsr0h	equ	0x3FEA
+  2106                           fsr0l	equ	0x3FE9
+  2107                           wreg	equ	0x3FE8
+  2108                           indf1	equ	0x3FE7
+  2109                           postinc1	equ	0x3FE6
+  2110                           postdec1	equ	0x3FE5
+  2111                           preinc1	equ	0x3FE4
+  2112                           plusw1	equ	0x3FE3
+  2113                           fsr1h	equ	0x3FE2
+  2114                           fsr1l	equ	0x3FE1
+  2115                           bsr	equ	0x3FE0
+  2116                           indf2	equ	0x3FDF
+  2117                           postinc2	equ	0x3FDE
+  2118                           postdec2	equ	0x3FDD
+  2119                           preinc2	equ	0x3FDC
+  2120                           plusw2	equ	0x3FDB
+  2121                           fsr2h	equ	0x3FDA
+  2122                           fsr2l	equ	0x3FD9
+  2123                           status	equ	0x3FD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         2
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     43      45
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+    BANK8           256      0       0
+    BANK9           256      0       0
+    BANK10          256      0       0
+    BANK11          256      0       0
+    BANK12          256      0       0
+    BANK13          256      0       0
+    BANK14          256      0       0
+    BANK15          256      0       0
+
+Pointer List with Targets:
+
+    ECAN_SetWakeUpInterruptHandler@handler	PTR FTN()void  size(2) Largest target is 1
+		 -> WakeUpDefaultInterruptHandler(), 
+
+    WakeUpInterruptHandler	PTR FTN()void  size(2) Largest target is 1
+		 -> Absolute function(), WakeUpDefaultInterruptHandler(), 
+
+    CAN_receive@tempCanMsg	PTR struct . size(2) Largest target is 14
+		 -> main@tempCanMsg(COMRAM[14]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_CAN_receive
+    _SYSTEM_Initialize->_ECAN_Initialize
+    _ECAN_Initialize->_ECAN_SetWakeUpInterruptHandler
+    _CAN_receive->_convertReg2ExtendedCANid
+
+Critical Paths under _INTERRUPT_InterruptManager in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK14
+
+    None.
+
+Critical Paths under _main in BANK15
+
+    None.
+
+Critical Paths under _INTERRUPT_InterruptManager in BANK15
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                19    19      0    1978
+                                             24 COMRAM    19    19      0
+                        _CAN_receive
+                  _SYSTEM_Initialize
+ ---------------------------------------------------------------------------------
+ (1) _SYSTEM_Initialize                                    0     0      0      98
+                    _ECAN_Initialize
+               _INTERRUPT_Initialize
+              _OSCILLATOR_Initialize
+             _PIN_MANAGER_Initialize
+                     _PMD_Initialize
+ ---------------------------------------------------------------------------------
+ (2) _PMD_Initialize                                       0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _PIN_MANAGER_Initialize                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _OSCILLATOR_Initialize                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _INTERRUPT_Initialize                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _ECAN_Initialize                                      1     1      0      98
+                                              4 COMRAM     1     1      0
+     _ECAN_SetWakeUpInterruptHandler
+ ---------------------------------------------------------------------------------
+ (3) _ECAN_SetWakeUpInterruptHandler                       2     0      2      98
+                                              2 COMRAM     2     0      2
+ ---------------------------------------------------------------------------------
+ (1) _CAN_receive                                          3     1      2    1760
+                                             21 COMRAM     3     1      2
+           _convertReg2ExtendedCANid
+           _convertReg2StandardCANid
+ ---------------------------------------------------------------------------------
+ (2) _convertReg2StandardCANid                            15    11      4     266
+                                              2 COMRAM    15    11      4
+ ---------------------------------------------------------------------------------
+ (2) _convertReg2ExtendedCANid                            19    15      4     821
+                                              2 COMRAM    19    15      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _INTERRUPT_InterruptManager                           2     2      0       0
+                                              0 COMRAM     2     2      0
+                      _ECAN_WAKI_ISR
+ ---------------------------------------------------------------------------------
+ (5) _ECAN_WAKI_ISR                                        0     0      0       0
+                   Absolute function *
+      _WakeUpDefaultInterruptHandler *
+ ---------------------------------------------------------------------------------
+ (6) _WakeUpDefaultInterruptHandler                        0     0      0       0
+ ---------------------------------------------------------------------------------
+ (6) Absolute function(Fake)                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 6
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _CAN_receive
+     _convertReg2ExtendedCANid
+     _convertReg2StandardCANid
+   _SYSTEM_Initialize
+     _ECAN_Initialize
+       _ECAN_SetWakeUpInterruptHandler
+     _INTERRUPT_Initialize
+     _OSCILLATOR_Initialize
+     _PIN_MANAGER_Initialize
+     _PMD_Initialize
+
+ _INTERRUPT_InterruptManager (ROOT)
+   _ECAN_WAKI_ISR
+     Absolute function(Fake) *
+     _WakeUpDefaultInterruptHandler *
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             FFF      0       0      60        0.0%
+BITBIGSFRhhhhll    492      0       0      40        0.0%
+EEDATA             400      0       0       0        0.0%
+BITBIGSFRllhhll    197      0       0      53        0.0%
+BITBANK15          100      0       0      34        0.0%
+BANK15             100      0       0      35        0.0%
+BITBANK14          100      0       0      32        0.0%
+BANK14             100      0       0      33        0.0%
+BITBANK13          100      0       0      30        0.0%
+BANK13             100      0       0      31        0.0%
+BITBANK12          100      0       0      28        0.0%
+BANK12             100      0       0      29        0.0%
+BITBANK11          100      0       0      26        0.0%
+BANK11             100      0       0      27        0.0%
+BITBANK10          100      0       0      24        0.0%
+BANK10             100      0       0      25        0.0%
+BITBANK9           100      0       0      22        0.0%
+BANK9              100      0       0      23        0.0%
+BITBANK8           100      0       0      20        0.0%
+BANK8              100      0       0      21        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBIGSFRllllll     9A      0       0      57        0.0%
+BITBIGSFRhhhhll     68      0       0      41        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     2B      2D       1       47.4%
+BITBIGSFRhhhhll     33      0       0      46        0.0%
+BITBIGSFRhhhhhh     2D      0       0      36        0.0%
+BITBIGSFRhhhhll     2C      0       0      47        0.0%
+BITBIGSFRhhhhhh     28      0       0      39        0.0%
+BITBIGSFRhhhhll     1C      0       0      43        0.0%
+BITBIGSFRllhhh      1A      0       0      51        0.0%
+BITBIGSFRlh         11      0       0      50        0.0%
+BITBIGSFRllhhlh      F      0       0      52        0.0%
+BITBIGSFRhhhhhh      D      0       0      37        0.0%
+BITBIGSFRhhhhll      B      0       0      45        0.0%
+BITBIGSFRhhhhll      B      0       0      44        0.0%
+BITBIGSFRhhhhhh      5      0       0      38        0.0%
+BITBIGSFRhhhhll      2      0       0      42        0.0%
+BITBIGSFRllhhll      2      0       0      56        0.0%
+BITBIGSFRllhhll      2      0       0      55        0.0%
+BITBIGSFRllhhll      2      0       0      54        0.0%
+BITBIGSFRllllll      2      0       0      58        0.0%
+BITBIGSFRhhl         1      0       0      48        0.0%
+BITBIGSFRhl          1      0       0      49        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR_9             0      0       0     200        0.0%
+SFR_9                0      0       0     200        0.0%
+BITSFR_8             0      0       0     200        0.0%
+SFR_8                0      0       0     200        0.0%
+BITSFR_7             0      0       0     200        0.0%
+SFR_7                0      0       0     200        0.0%
+BITSFR_6             0      0       0     200        0.0%
+SFR_6                0      0       0     200        0.0%
+BITSFR_5             0      0       0     200        0.0%
+SFR_5                0      0       0     200        0.0%
+BITSFR_4             0      0       0     200        0.0%
+SFR_4                0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      2D      59        0.0%
+DATA                 0      0      2D       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.36 build 20220127204148 
+Symbol Table                                                                                   Sat Mar 05 11:57:40 2022
+
+                                               l42 06D4                                                 l45 0682  
+                                               l39 06EA                                                l402 0622  
+                                              l315 02D4                                                l308 017A  
+                                              l335 040E                                                l416 06F8  
+                                              l441 05A6                                                l338 0564  
+                                              l346 06F4                                                l291 04EC  
+                                              l438 05A0                                                u300 0030  
+                                              u301 002C                                                u310 003E  
+                                              u311 003A                                                u320 018A  
+                                              u321 0186                                                u330 0198  
+                                              u331 0194                                                u260 0428  
+                                              u340 05A0                                                u261 0424  
+                                              u341 059C                                                u270 04EC  
+                                              u350 05C4                                                u271 04E8  
+                                              u351 05C0              ECAN_SetWakeUpInterruptHandler@handler 0003  
+                                              u285 034A                                                u295 0522  
+                                              tosl 003FFD                                                wreg 003FE8  
+                       ??_convertReg2StandardCANid 0007                                               l1130 05E0  
+                                             l1124 06F6                                               l1140 0610  
+                                             l1132 05E2                                               l1142 0612  
+                                             l1134 060A                                               l1126 0660  
+                                             l1144 0614                                               l1136 060C  
+                                             l1128 05CC                                               l1146 06BE  
+                                             l1138 060E                                               l1500 02F6  
+                                             l1510 03B8                                               l1502 0320  
+                                             l1512 03EE                                               l1504 0338  
+                                             l1520 04F0                                               l1600 02A6  
+                                             l1514 03FE                                               l1506 036A  
+                                             l1522 051A                                               l1602 02B8  
+                                             l1530 06D6                                               l1508 03A0  
+                                             l1524 0544                                               l1604 02CA  
+                                             l1540 001E                                               l1532 06DA  
+                                             l1612 0566                                               l1526 0554  
+                                             l1518 04F0                                               l1550 008E  
+                                             l1542 0022                                               l1534 06DE  
+                                             l1614 056A                                               l1608 02D2  
+                                             l1560 0104                                               l1552 009E  
+                                             l1544 0030                                               l1480 0414  
+                                             l1536 06E2                                               l1616 0572  
+                                             l1570 015E                                               l1562 0116  
+                                             l1554 00CE                                               l1546 003E  
+                                             l1490 04D0                                               l1482 0428  
+                                             l1538 06E6                                               l1618 05A8  
+                                             l1580 01A8                                               l1572 0170  
+                                             l1564 0128                                               l1556 00E0  
+                                             l1548 004E                                               l1476 06EC  
+                                             l1492 04D4                                               l1484 04BE  
+                                             l1494 02D8                                               l1590 024C  
+                                             l1582 01E8                                               l1574 0172  
+                                             l1566 013A                                               l1558 00F2  
+                                             l1486 04CA                                               l1478 0410  
+                                             l1496 02E8                                               l1592 025E  
+                                             l1584 01F8                                               l1576 018A  
+                                             l1568 014C                                               l1488 04CE  
+                                             l1498 02EE                                               l1594 0270  
+                                             l1586 0228                                               l1578 0198  
+                                             l1596 0282                                               l1588 023A  
+                                             l1598 0294                                               _LATA 003FBA  
+                                             _LATB 003FBB                                               _LATC 003FBC  
+                                             _PMD0 0039C0                                               _PMD1 0039C1  
+                                             _PMD2 0039C2                                               _PMD3 0039C3  
+                                             _PMD4 0039C4                                               _PMD5 0039C5  
+                                             _PMD6 0039C6                                               _PMD7 0039C7  
+                                             _WPUA 003A41                                               _WPUB 003A51  
+                                             _WPUC 003A61                                               _WPUE 003A81  
+                                             _main 0566                                               fsr2h 003FDA  
+                                             indf2 003FDF                                               fsr2l 003FD9  
+                                             start 001A                                       ___param_bank 000000  
+                    __end_of_OSCILLATOR_Initialize 06D6                                              ?_main 0001  
+                                            i2l423 0652                                              i2l282 06FA  
+                                            i2l349 06A2                                              _OSCEN 0039DD  
+                                            _TRISA 003FC2                                              _TRISB 003FC3  
+                                            _TRISC 003FC4                              CAN_receive@tempCanMsg 0016  
+                                     main@tempVal1 001D                                              pclath 003FFA  
+                                            pclatu 003FFB                convertReg2ExtendedCANid@ConvertedID 0012  
+                                            status 003FD8                                    __initialization 06A4  
+                                     __end_of_main 05CC                        ?_INTERRUPT_InterruptManager 0001  
+                                           ??_main 0019                                      __activetblptr 000002  
+                  ??_WakeUpDefaultInterruptHandler 0001                                  ??_ECAN_Initialize 0005  
+                                           _CANCON 003F8F                                             _CIOCON 003700  
+                                           _ANSELA 003A40                                             _ANSELB 003A50  
+                                           _ANSELC 003A60                                             _RB4PPS 003A0C  
+                                           _ODCONA 003A42                                             _ODCONB 003A52  
+                                           _ODCONC 003A62                                             i2l1282 0684  
+                                           i2l1284 069E                                             i2l1462 0630  
+                                           i2l1464 0640                                             i2l1466 064E  
+                                           _INLVLA 003A44                                             _INLVLB 003A54  
+                                           _INLVLC 003A64                                             _INLVLE 003A84  
+                                           _OSCFRQ 0039DF                                             _RXB0D0 003F86  
+                                           _RXB0D1 003F87                                             _RXB0D2 003F88  
+                                           _RXB0D3 003F89                                             _RXB1D0 0037F6  
+                                           _RXB0D4 003F8A                                             _RXB1D1 0037F7  
+                                           _RXB0D5 003F8B                                             _RXB1D2 0037F8  
+                                           _RXB0D6 003F8C                                             _RXB1D3 0037F9  
+                                           _RXB0D7 003F8D                                             _RXB1D4 0037FA  
+                                           _RXB1D5 0037FB                                             _RXB1D6 0037FC  
+                                           _RXB1D7 0037FD                                             _TXB0D0 0037E6  
+                                           _TXB0D1 0037E7                                             _TXB0D2 0037E8  
+                                           _TXB0D3 0037E9                                             _TXB1D0 0037D6  
+                                           _TXB0D4 0037EA                                             _TXB1D1 0037D7  
+                                           _TXB0D5 0037EB                                             _TXB1D2 0037D8  
+                                           _TXB0D6 0037EC                                             _TXB1D3 0037D9  
+                                           _TXB0D7 0037ED                                             _TXB2D0 0037C6  
+                                           _TXB1D4 0037DA                                             _TXB2D1 0037C7  
+                                           _TXB1D5 0037DB                                             _TXB2D2 0037C8  
+                                           _TXB1D6 0037DC                                             _TXB2D3 0037C9  
+                                           _TXB1D7 0037DD                                             _TXB2D4 0037CA  
+                                           _TXB2D5 0037CB                                             _TXB2D6 0037CC  
+                                           _TXB2D7 0037CD                                             i2u9_48 068A  
+                                           i2u9_49 069E                                             isa$std 000001  
+                                   _PMD_Initialize 0660                   __end_of_convertReg2StandardCANid 0566  
+                                           tblptru 003FF8                                  _SYSTEM_Initialize 06D6  
+                                       __accesstop 0060                            __end_of__initialization 06B4  
+                               ?_SYSTEM_Initialize 0001                           _convertReg2ExtendedCANid 02D6  
+                           CAN_receive@returnValue 0018                                      ___rparam_used 000001  
+                                   __pcstackCOMRAM 0001                                ??_SYSTEM_Initialize 0006  
+                           __end_of_PMD_Initialize 0684                                      _ECAN_WAKI_ISR 0684  
+            convertReg2StandardCANid@tempRXBn_SIDH 0009              convertReg2StandardCANid@tempRXBn_SIDL 0003  
+                        __end_of_SYSTEM_Initialize 06EC              __end_of_WakeUpDefaultInterruptHandler 06FC  
+                    _WakeUpDefaultInterruptHandler 06FA                                            IVTBASEH 003FD6  
+                                          IVTBASEL 003FD5                                            IVTBASEU 003FD7  
+                                          _ECANCON 003F91                                            _CANSTAT 003F8E  
+                 ??_ECAN_SetWakeUpInterruptHandler 0005                    ?_ECAN_SetWakeUpInterruptHandler 0003  
+                                  ?_PMD_Initialize 0001                                            _BRGCON1 003703  
+                                          _BRGCON2 003704                                            _BRGCON3 003705  
+                                          _OSCCON1 0039D9                                            _OSCCON3 0039DB  
+                                   ?_ECAN_WAKI_ISR 0001                                            i2u22_40 0640  
+                                          i2u22_41 063C                                            i2u23_40 064E  
+                                          i2u23_41 064A                                            _RXB0DLC 003F85  
+                                          _RXB1DLC 0037F5                                            _OSCTUNE 0039DE  
+                                          _TXB0DLC 0037E5                                            _SLRCONA 003A43  
+                                          _SLRCONB 003A53                                            _SLRCONC 003A63  
+                                          _TXB1DLC 0037D5                                            _TXB2DLC 0037C5  
+                                          __Hparam 0000                                            __Lparam 0000  
+                        ?_convertReg2StandardCANid 0003                                    _ECAN_Initialize 0410  
+                                          __pcinit 06A4                                            __ramtop 1000  
+                                          __ptext0 0566                                            __ptext1 06D6  
+                                          __ptext2 0660                                            __ptext3 05CC  
+                                          __ptext4 06BE                                            __ptext5 06F6  
+                                          __ptext6 0410                                            __ptext7 06EC  
+                                          __ptext8 001E                                            __ptext9 04EE  
+                                   main@tempCanMsg 001E                              _OSCILLATOR_Initialize 06BE  
+                         ??_PIN_MANAGER_Initialize 0003                               end_of_initialization 06B4  
+                           _WakeUpInterruptHandler 002C                                      __Lmediumconst 0000  
+                                    ??_CAN_receive 0018                   fp__WakeUpDefaultInterruptHandler 0000  
+                   ?_WakeUpDefaultInterruptHandler 0001                                            postinc2 003FDE  
+                                  ??_ECAN_WAKI_ISR 0001                         ??_convertReg2ExtendedCANid 0007  
+                          __end_of_ECAN_Initialize 04EE                       __end_of_INTERRUPT_Initialize 06FA  
+                              __end_of_CAN_receive 02D6                             ?_OSCILLATOR_Initialize 0001  
+                              start_initialization 06A4                                         ivt0x8_base 0008  
+              convertReg2StandardCANid@returnValue 000A                                   ??_PMD_Initialize 0003  
+                                      __pbssCOMRAM 002C             __end_of_ECAN_SetWakeUpInterruptHandler 06F6  
+                   _ECAN_SetWakeUpInterruptHandler 06EC                                        _CAN_receive 001E  
+                                 ?_ECAN_Initialize 0001                             _PIN_MANAGER_Initialize 05CC  
+                     ??_INTERRUPT_InterruptManager 0001                                        _COMSTATbits 003F90  
+                                         _CANRXPPS 003AED                   __end_of_convertReg2ExtendedCANid 0410  
+                             _INTERRUPT_Initialize 06F6                                           _LATAbits 003FBA  
+                                         _PIE5bits 003995                                           _PIR5bits 0039A5  
+                                         _RXB0EIDH 003F83                                           _RXB0EIDL 003F84  
+                                         _RXB1EIDH 0037F3                                           _RXB1EIDL 0037F4  
+                                         _RXB0SIDH 003F81                                           _RXB0SIDL 003F82  
+                                         _RXF0EIDH 0037A2                                           _RXB1SIDH 0037F1  
+                                         _RXF0EIDL 0037A3                                           _RXB1SIDL 0037F2  
+                                         _RXF1EIDH 0037A6                                           _RXF1EIDL 0037A7  
+                                         _RXF2EIDH 0037AA                                           _RXF2EIDL 0037AB  
+                                         _RXF3EIDH 0037AE                                           _RXF3EIDL 0037AF  
+                                         _RXF4EIDH 0037B2                                           _RXF4EIDL 0037B3  
+                                         _RXF5EIDH 0037B6                                           _RXF5EIDL 0037B7  
+                                         _RXF0SIDH 0037A0                                           _RXF0SIDL 0037A1  
+                                         _RXF1SIDH 0037A4                                           _TXB0EIDH 0037E3  
+                                         _TXB0EIDL 0037E4                                           _RXF1SIDL 0037A5  
+                                         _RXF2SIDH 0037A8                                           _TXB1EIDH 0037D3  
+                                         _TXB1EIDL 0037D4                                           _RXF2SIDL 0037A9  
+                                         _RXF3SIDH 0037AC                                           _TXB2EIDH 0037C3  
+                                         _TXB2EIDL 0037C4                                           _RXF3SIDL 0037AD  
+                                         _RXF4SIDH 0037B0                                           _RXF4SIDL 0037B1  
+                                         _RXF5SIDH 0037B4                                           _RXF5SIDL 0037B5  
+                                         _RXM0EIDH 0037BA                                           _RXM0EIDL 0037BB  
+                                         _RXM1EIDH 0037BE                                           _TXB0SIDH 0037E1  
+                                         _RXM1EIDL 0037BF                                           _TXB0SIDL 0037E2  
+                                         _TXB1SIDH 0037D1                                           _TXB1SIDL 0037D2  
+                                         _TXB2SIDH 0037C1                                           _TXB2SIDL 0037C2  
+                                         _RXM0SIDH 0037B8                                           _RXM0SIDL 0037B9  
+                                         _RXM1SIDH 0037BC                                           _RXM1SIDL 0037BD  
+                                      _INTCON0bits 003FD2                              ?_INTERRUPT_Initialize 0001  
+                         _convertReg2StandardCANid 04EE              convertReg2ExtendedCANid@tempRXBn_EIDH 000B  
+            convertReg2ExtendedCANid@tempRXBn_EIDL 0003              convertReg2ExtendedCANid@tempRXBn_SIDH 0004  
+            convertReg2ExtendedCANid@tempRXBn_SIDL 0005                                           __Hrparam 0000  
+                                         __Lrparam 0000                            ??_OSCILLATOR_Initialize 0003  
+convertReg2ExtendedCANid@CAN_standardLo_ID_hi3bits 0011  convertReg2ExtendedCANid@CAN_standardLo_ID_lo2bits 0010  
+                            __end_of_ECAN_WAKI_ISR 06A4                                           __pivt0x8 0008  
+                                         __ptext10 02D6                                           __ptext11 0624  
+                                         __ptext12 0684                                           __ptext13 06FA  
+                                         __ptext14 0000                convertReg2StandardCANid@ConvertedID 000E  
+              convertReg2ExtendedCANid@returnValue 000C                                           isa$xinst 000000  
+                        ?_convertReg2ExtendedCANid 0003                 __end_of_INTERRUPT_InterruptManager 0660  
+                       _INTERRUPT_InterruptManager 0624                                        _RXB0CONbits 003F80  
+                                      _RXB1CONbits 0037F0                             ??_INTERRUPT_Initialize 0003  
+                                         intlevel2 0000                            ?_PIN_MANAGER_Initialize 0001  
+                                      _TXB0CONbits 0037E0                                       ?_CAN_receive 0016  
+                                      _TXB1CONbits 0037D0                                        _TXB2CONbits 0037C0  
+                   __end_of_PIN_MANAGER_Initialize 0624  
