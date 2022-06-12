@@ -65,25 +65,25 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
-// get/set IO_RA6 aliases
-#define IO_RA6_TRIS                 TRISAbits.TRISA6
-#define IO_RA6_LAT                  LATAbits.LATA6
-#define IO_RA6_PORT                 PORTAbits.RA6
-#define IO_RA6_WPU                  WPUAbits.WPUA6
-#define IO_RA6_OD                   ODCONAbits.ODCA6
-#define IO_RA6_ANS                  ANSELAbits.ANSELA6
-#define IO_RA6_SetHigh()            do { LATAbits.LATA6 = 1; } while(0)
-#define IO_RA6_SetLow()             do { LATAbits.LATA6 = 0; } while(0)
-#define IO_RA6_Toggle()             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0)
-#define IO_RA6_GetValue()           PORTAbits.RA6
-#define IO_RA6_SetDigitalInput()    do { TRISAbits.TRISA6 = 1; } while(0)
-#define IO_RA6_SetDigitalOutput()   do { TRISAbits.TRISA6 = 0; } while(0)
-#define IO_RA6_SetPullup()          do { WPUAbits.WPUA6 = 1; } while(0)
-#define IO_RA6_ResetPullup()        do { WPUAbits.WPUA6 = 0; } while(0)
-#define IO_RA6_SetPushPull()        do { ODCONAbits.ODCA6 = 0; } while(0)
-#define IO_RA6_SetOpenDrain()       do { ODCONAbits.ODCA6 = 1; } while(0)
-#define IO_RA6_SetAnalogMode()      do { ANSELAbits.ANSELA6 = 1; } while(0)
-#define IO_RA6_SetDigitalMode()     do { ANSELAbits.ANSELA6 = 0; } while(0)
+// get/set BrakeLight aliases
+#define BrakeLight_TRIS                 TRISAbits.TRISA6
+#define BrakeLight_LAT                  LATAbits.LATA6
+#define BrakeLight_PORT                 PORTAbits.RA6
+#define BrakeLight_WPU                  WPUAbits.WPUA6
+#define BrakeLight_OD                   ODCONAbits.ODCA6
+#define BrakeLight_ANS                  ANSELAbits.ANSELA6
+#define BrakeLight_SetHigh()            do { LATAbits.LATA6 = 1; } while(0)
+#define BrakeLight_SetLow()             do { LATAbits.LATA6 = 0; } while(0)
+#define BrakeLight_Toggle()             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0)
+#define BrakeLight_GetValue()           PORTAbits.RA6
+#define BrakeLight_SetDigitalInput()    do { TRISAbits.TRISA6 = 1; } while(0)
+#define BrakeLight_SetDigitalOutput()   do { TRISAbits.TRISA6 = 0; } while(0)
+#define BrakeLight_SetPullup()          do { WPUAbits.WPUA6 = 1; } while(0)
+#define BrakeLight_ResetPullup()        do { WPUAbits.WPUA6 = 0; } while(0)
+#define BrakeLight_SetPushPull()        do { ODCONAbits.ODCA6 = 0; } while(0)
+#define BrakeLight_SetOpenDrain()       do { ODCONAbits.ODCA6 = 1; } while(0)
+#define BrakeLight_SetAnalogMode()      do { ANSELAbits.ANSELA6 = 1; } while(0)
+#define BrakeLight_SetDigitalMode()     do { ANSELAbits.ANSELA6 = 0; } while(0)
 
 // get/set RB3 procedures
 #define RB3_SetHigh()            do { LATBbits.LATB3 = 1; } while(0)
@@ -108,6 +108,26 @@
 #define RB4_ResetPullup()           do { WPUBbits.WPUB4 = 0; } while(0)
 #define RB4_SetAnalogMode()         do { ANSELBbits.ANSELB4 = 1; } while(0)
 #define RB4_SetDigitalMode()        do { ANSELBbits.ANSELB4 = 0; } while(0)
+
+// get/set Buzzer aliases
+#define Buzzer_TRIS                 TRISCbits.TRISC3
+#define Buzzer_LAT                  LATCbits.LATC3
+#define Buzzer_PORT                 PORTCbits.RC3
+#define Buzzer_WPU                  WPUCbits.WPUC3
+#define Buzzer_OD                   ODCONCbits.ODCC3
+#define Buzzer_ANS                  ANSELCbits.ANSELC3
+#define Buzzer_SetHigh()            do { LATCbits.LATC3 = 1; } while(0)
+#define Buzzer_SetLow()             do { LATCbits.LATC3 = 0; } while(0)
+#define Buzzer_Toggle()             do { LATCbits.LATC3 = ~LATCbits.LATC3; } while(0)
+#define Buzzer_GetValue()           PORTCbits.RC3
+#define Buzzer_SetDigitalInput()    do { TRISCbits.TRISC3 = 1; } while(0)
+#define Buzzer_SetDigitalOutput()   do { TRISCbits.TRISC3 = 0; } while(0)
+#define Buzzer_SetPullup()          do { WPUCbits.WPUC3 = 1; } while(0)
+#define Buzzer_ResetPullup()        do { WPUCbits.WPUC3 = 0; } while(0)
+#define Buzzer_SetPushPull()        do { ODCONCbits.ODCC3 = 0; } while(0)
+#define Buzzer_SetOpenDrain()       do { ODCONCbits.ODCC3 = 1; } while(0)
+#define Buzzer_SetAnalogMode()      do { ANSELCbits.ANSELC3 = 1; } while(0)
+#define Buzzer_SetDigitalMode()     do { ANSELCbits.ANSELC3 = 0; } while(0)
 
 /**
    @Param

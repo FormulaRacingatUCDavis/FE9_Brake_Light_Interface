@@ -58,7 +58,11 @@ void  INTERRUPT_Initialize (void)
 void __interrupt() INTERRUPT_InterruptManager (void)
 {
     // interrupt handler
-    if(PIE5bits.WAKIE == 1 && PIR5bits.WAKIF == 1)
+    if(PIE3bits.TMR0IE == 1 && PIR3bits.TMR0IF == 1)
+    {
+        TMR0_ISR();
+    }
+    else if(PIE5bits.WAKIE == 1 && PIR5bits.WAKIF == 1)
     {
         ECAN_WAKI_ISR();
     }
